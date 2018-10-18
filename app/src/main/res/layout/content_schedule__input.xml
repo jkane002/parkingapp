@@ -8,4 +8,11 @@
     tools:context=".Schedule_Input"
     tools:showIn="@layout/activity_schedule__input">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="196dp"
+        android:layout_height="225dp"
+        app:srcCompat="@android:drawable/btn_star"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="143dp" />
 </android.support.constraint.ConstraintLayout>
