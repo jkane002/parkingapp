@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Parking_App</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_schedule__input">Schedule_Input</string>
+</resources>
