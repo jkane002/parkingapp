@@ -24,20 +24,11 @@ public class Schedule_Input extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Schedule_Input.this, MainActivity.class));
-//            }
-//        });
-
-
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
         bldging_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG,"in onclick()");
+                startActivity(new Intent(Schedule_Input.this, Building_Selection.class));
             }
         });
     }

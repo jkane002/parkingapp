@@ -15,4 +15,5 @@
         android:text="Add Building"
         tools:layout_editor_absoluteX="249dp"
         tools:layout_editor_absoluteY="39dp" />
+
 </android.support.constraint.ConstraintLayout>
