@@ -22,7 +22,16 @@
         <activity
             android:name=".Schedule_Input"
             android:label="@string/title_activity_schedule__input"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Building_Selection"
+            android:label="@string/title_activity_building__selection"
+            android:parentActivityName=".Schedule_Input"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrewcruz.parking_app.Schedule_Input" />
+        </activity>
     </application>
 
 </manifest>
