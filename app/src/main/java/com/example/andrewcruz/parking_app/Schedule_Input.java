@@ -18,8 +18,6 @@ import org.w3c.dom.Text;
 
 public class Schedule_Input extends AppCompatActivity {
     private static final String TAG = "Schedule Input Activity";
-//    ListView simpleList;
-//    String[] buildings = {"Chung", "MSE", "BLANK"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +28,10 @@ public class Schedule_Input extends AppCompatActivity {
 
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
 
-
-//        simpleList = (ListView)findViewById(R.id.simpleListView);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, buildings);
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_list_view_buildings, R.id.textView, buildings);
-//        simpleList.setAdapter(arrayAdapter);
-
         bldging_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Schedule_Input.this, ListViewBuildings.class));
-//                simpleList = (ListView)findViewById(R.id.building_list);
-//                ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, buildings);
-//                simpleList.setAdapter(adapter);
             }
         });
     }
