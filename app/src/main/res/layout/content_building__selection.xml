@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Schedule_Input"
-    tools:showIn="@layout/activity_schedule__input">
+    tools:context=".Building_Selection"
+    tools:showIn="@layout/activity_building__selection">
 
-    <Button
-        android:id="@+id/add_building"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Building"
-        tools:layout_editor_absoluteX="249dp"
-        tools:layout_editor_absoluteY="39dp" />
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bldging_names"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>

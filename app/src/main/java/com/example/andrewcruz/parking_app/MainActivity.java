@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,17 +22,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        THIS IS THE MAIL BUTTON ON BOTTOM RIGHT
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        TextView bldging_bttn = (TextView) findViewById(R.id.sched_txt);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        bldging_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Schedule_Input.class));
             }
         });
-    }
 
+    }
 
     //THIS IS THE THREE BUTTONS ON TOP RIGHT
     @Override
