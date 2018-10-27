@@ -39,7 +39,6 @@ public class Schedule_Input extends AppCompatActivity {
         setContentView(R.layout.activity_schedule__input);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        added_bldgs.add("EMPTY");
 
 //        Get Add Building Button from view
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
@@ -66,7 +65,7 @@ public class Schedule_Input extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Schedule_Input.RESULT_OK){
-                String result=data.getStringExtra("result");
+                String result=data.getStringExtra("building_name");
                 added_bldgs.add(result);
                 arrayAdapter.notifyDataSetChanged();
             }
