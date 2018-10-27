@@ -32,7 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrewcruz.parking_app.Schedule_Input" />
         </activity>
-        <activity android:name=".ListViewBuildings"></activity>
+        <activity android:name=".ListViewBuildings" />
+        <activity android:name=".User_Class_Location_List"></activity>
     </application>
 
 </manifest>
