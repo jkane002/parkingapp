@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main2Activity"
-    android:background="#fff0"
+    android:background="#e97b56"
     >
 
 
@@ -13,9 +13,9 @@
         android:id="@+id/listView"
         android:layout_width="346dp"
         android:layout_height="436dp"
-        android:text="Hello how are you doing"
+        android:text="Test. Hello how are you doing"
         android:textSize="40sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"
-        tools:text="This is where text goes." />
+        tools:text="Test to show where text will go" />
 </android.support.constraint.ConstraintLayout>

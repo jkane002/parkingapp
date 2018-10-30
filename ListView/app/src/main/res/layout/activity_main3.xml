@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main3Activity"
-    android:background="#ff00">
+    android:background="#dd15ef">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="344dp"
         android:layout_height="480dp"
-        android:text="TextView"
+        android:text="Test to show where the test will go"
         android:textSize="40sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"

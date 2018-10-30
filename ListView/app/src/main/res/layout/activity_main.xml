@@ -27,8 +27,8 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="#4d139f"
-        android:dividerHeight="2dp"
+        android:divider="#cfb3f5"
+        android:dividerHeight="4dp"
       />
 
 </android.support.constraint.ConstraintLayout>

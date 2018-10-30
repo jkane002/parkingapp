@@ -5,8 +5,9 @@
         android:paddingBottom="3dip"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:textSize="40dp"
-    android:textColor="#07baf6"
+    android:textSize="50dp"
+    android:textColor="#0f20b9"
+    android:typeface="normal"
     >
 
 </TextView>
