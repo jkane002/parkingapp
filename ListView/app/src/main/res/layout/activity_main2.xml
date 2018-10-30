@@ -13,9 +13,8 @@
         android:id="@+id/listView"
         android:layout_width="346dp"
         android:layout_height="436dp"
-        android:text="TextView"
+        android:text="Hello how are you doing"
         android:textSize="40sp"
-
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"
         tools:text="This is where text goes." />

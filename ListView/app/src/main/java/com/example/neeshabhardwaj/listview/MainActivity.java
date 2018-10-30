@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView)findViewById(R.id.listView);
 
-        final String[] values = new String[]{"Option 1", "Option 2", "Option 3"};
+        final String[] values = new String[]{"Option 1", "Option 2", "Option 3", "Option 4", "Option 5"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.activity_list_item,android.R.id.text1, values);
+               R.layout.mytextviewlayout,android.R.id.text1, values);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,10 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent myintent  = new Intent(view.getContext(), Main2Activity.class );
                     startActivityForResult(myintent,2);
                 }
-
             }
         });
-
-
     }
 }
