@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.andrewcruz.parking_app">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,7 +35,29 @@
                 android:value="com.example.andrewcruz.parking_app.Schedule_Input" />
         </activity>
         <activity android:name=".ListViewBuildings" />
-        <activity android:name=".User_Class_Location_List"></activity>
+        <activity android:name=".User_Class_Location_List" />
+        <activity
+            android:name=".Parking_View"
+            android:label="@string/title_activity_parking__view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrewcruz.parking_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Taps_View"
+            android:label="@string/title_activity_taps__view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrewcruz.parking_app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".List_Main"
+            android:label="@string/title_activity_list__main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
