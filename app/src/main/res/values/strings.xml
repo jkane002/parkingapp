@@ -17,4 +17,11 @@
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
     <string name="remove">Remove</string>
+    <string name="title_activity_parking__view">Parking_View</string>
+    <string name="title_activity_taps__view">Taps_View</string>
+    <string name="schedule_input">Schedule Input</string>
+    <string name="map_view">Map View</string>
+    <string name="name">Name</string>
+    <string name="taps">TAPS</string>
+    <string name="title_activity_list__main">List_Main</string>
 </resources>
