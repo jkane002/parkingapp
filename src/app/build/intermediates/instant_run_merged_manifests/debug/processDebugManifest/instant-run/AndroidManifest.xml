@@ -8,6 +8,8 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="27" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:debuggable="true"
@@ -40,6 +42,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.andrewcruz.parking_app.Schedule_Input" />
         </activity>
+        <activity android:name="com.example.andrewcruz.parking_app.ListViewBuildings" />
+        <activity android:name="com.example.andrewcruz.parking_app.User_Class_Location_List" />
+        <activity
+            android:name="com.example.andrewcruz.parking_app.Parking_View"
+            android:label="@string/title_activity_parking__view"
+            android:parentActivityName="com.example.andrewcruz.parking_app.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrewcruz.parking_app.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.andrewcruz.parking_app.Taps_View"
+            android:label="@string/title_activity_taps__view"
+            android:parentActivityName="com.example.andrewcruz.parking_app.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.andrewcruz.parking_app.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.andrewcruz.parking_app.List_Main"
+            android:label="@string/title_activity_list__main"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

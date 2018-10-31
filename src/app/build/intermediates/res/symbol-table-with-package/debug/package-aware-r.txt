@@ -94,6 +94,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr cardBackgroundColor
+attr cardCornerRadius
+attr cardElevation
+attr cardMaxElevation
+attr cardPreventCornerOverlap
+attr cardUseCompatPadding
+attr cardViewStyle
 attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
@@ -125,6 +132,11 @@ attr contentInsetLeft
 attr contentInsetRight
 attr contentInsetStart
 attr contentInsetStartWithNavigation
+attr contentPadding
+attr contentPaddingBottom
+attr contentPaddingLeft
+attr contentPaddingRight
+attr contentPaddingTop
 attr contentScrim
 attr controlBackground
 attr coordinatorLayoutStyle
@@ -465,6 +477,10 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color cardview_dark_background
+color cardview_light_background
+color cardview_shadow_end_color
+color cardview_shadow_start_color
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
@@ -600,6 +616,9 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen cardview_compat_inset_shadow
+dimen cardview_default_elevation
+dimen cardview_default_radius
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -819,6 +838,7 @@ id actions
 id activity_chooser_view_content
 id add
 id add_building
+id add_selection
 id alertTitle
 id all
 id always
@@ -826,11 +846,15 @@ id async
 id auto
 id barrier
 id beginning
-id bldging_names
 id blocking
 id bottom
+id building_days
+id building_name
+id building_time
+id but1
 id buttonPanel
 id cancel_action
+id cancel_selection
 id center
 id center_horizontal
 id center_vertical
@@ -863,11 +887,13 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
 id fill
 id fill_horizontal
 id fill_vertical
 id fixed
 id forever
+id fri_check
 id ghost_view
 id gone
 id groups
@@ -886,13 +912,16 @@ id left
 id line1
 id line3
 id listMode
+id listView
 id list_item
+id list_view_schedule
 id map_view
 id masked
 id media_actions
 id message
 id middle
 id mini
+id mon_check
 id multiply
 id navigation_header_container
 id never
@@ -914,6 +943,7 @@ id radio
 id right
 id right_icon
 id right_side
+id sat_check
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -936,10 +966,12 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id select_dialog_listview
+id set_time
 id shortcut
 id showCustom
 id showHome
 id showTitle
+id simpleListView
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -956,6 +988,7 @@ id start
 id status_bar_latest_event_content
 id submenuarrow
 id submit_area
+id sun_check
 id tabMode
 id tag_transition_group
 id text
@@ -966,6 +999,7 @@ id textView
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
+id thur_check
 id time
 id title
 id titleDividerNoCustom
@@ -979,11 +1013,14 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tues_check
 id uniform
 id up
 id useLogo
 id view_offset_helper
 id visible
+id webview
+id wed_check
 id withText
 id wrap
 id wrap_content
@@ -1025,11 +1062,19 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_building__selection
+layout activity_list__main
+layout activity_list_view_buildings
 layout activity_main
+layout activity_parking__view
 layout activity_schedule__input
+layout activity_taps__view
+layout activity_user__class__location__list
 layout content_building__selection
+layout content_list__main
 layout content_main
+layout content_parking__view
 layout content_schedule__input
+layout content_taps__view
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1044,6 +1089,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout dialog_building
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1096,19 +1142,40 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_settings
+string add
+string add_building_str
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
+string button
+string cancel
 string character_counter_pattern
+string friday
+string map_view
+string monday
+string name
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string remove
+string saturday
+string schedule_input
 string search_menu_title
+string selected_days
 string status_bar_notification_info_overflow
+string sunday
+string taps
+string thursday
+string time
 string title_activity_building__selection
+string title_activity_list__main
+string title_activity_parking__view
 string title_activity_schedule__input
+string title_activity_taps__view
+string tuesday
+string wednesday
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1124,6 +1191,7 @@ style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
 style Base_Animation_AppCompat_DropDownUp
 style Base_Animation_AppCompat_Tooltip
+style Base_CardView
 style Base_DialogWindowTitle_AppCompat
 style Base_DialogWindowTitleBackground_AppCompat
 style Base_TextAppearance_AppCompat
@@ -1277,6 +1345,9 @@ style Base_Widget_AppCompat_Toolbar
 style Base_Widget_AppCompat_Toolbar_Button_Navigation
 style Base_Widget_Design_AppBarLayout
 style Base_Widget_Design_TabLayout
+style CardView
+style CardView_Dark
+style CardView_Light
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_ThemeOverlay_AppCompat
@@ -1507,6 +1578,7 @@ styleable AppCompatTheme android_windowIsFloating android_windowAnimationStyle a
 styleable BottomNavigationView elevation itemBackground itemIconTint itemTextColor menu
 styleable BottomSheetBehavior_Layout behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
+styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha
