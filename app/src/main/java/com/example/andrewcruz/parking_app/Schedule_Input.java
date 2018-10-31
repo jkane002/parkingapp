@@ -41,6 +41,10 @@ public class Schedule_Input extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+//        Update Building Adapter
+//        updateLocalDataSet(userBuildingList);
+
+
 //        Get Add Building Button from view
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
 
@@ -81,7 +85,35 @@ public class Schedule_Input extends AppCompatActivity {
         Buildings b1 = new Buildings(name,location,timeH,timeM,days);
         userBuildingList.add(b1);
         userBuildings.notifyDataSetChanged();
+
+//        updateLocalDataSet(userBuildingList);
     }
+
+//    //Updates local data of
+//    protected void updateLocalDataSet(ArrayList<Buildings> userBuild) {
+////        if(userBuild != userBuildingList) {
+////            Log.d(TAG, "***********NOT THE SAME LIST**************");
+////        } else {
+////            Log.d(TAG, "***********THE SAME LIST******************");
+////        }
+//
+//        SharedPreferences settings = getApplicationContext().getSharedPreferences(MY_PREFS_NAME,MODE_PRIVATE);
+//        SharedPreferences.Editor editor = settings.edit();
+//
+//        int index = userBuildingList.size() - 1;
+//
+//        editor.putString("building_name" + index, userBuildingList.get(index).getBuildingName());
+//        editor.putString("building_location" + index, userBuildingList.get(index).getLocation());
+//        editor.putInt("building_name" + index, userBuildingList.get(index).getHour());
+//        editor.putInt("building_name" + index, userBuildingList.get(index).getMinute());
+//        editor.putB("building_name" + index, userBuildingList.get(index).getDays());
+//
+//        editor.apply();
+//
+//
+//    }
+
+
 
 
 }

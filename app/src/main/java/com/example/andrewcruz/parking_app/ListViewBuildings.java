@@ -121,8 +121,7 @@ public class ListViewBuildings extends AppCompatActivity {
                 });
 
                 builder.setView(mView);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                builder.create().show();
             }
         });
     }
