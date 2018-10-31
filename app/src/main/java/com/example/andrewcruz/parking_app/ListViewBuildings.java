@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import java.util.Calendar;
 import android.nfc.Tag;
@@ -40,19 +41,14 @@ public class ListViewBuildings extends AppCompatActivity {
             "UNLH", "WATKINS"};
     String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     boolean[] checked_days = new boolean[] {false, false, false, false, false, false, false};
-    int mHour = -1;
-    int mMinute = -1;
-
-
-
-//    BuildingAdapter bAdapter;
-//    Buildings[] blds;
+    int mHour = 12;
+    int mMinute = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        creatArray();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_buildings);
+
 //        Creates List of Building names for list view
         simpleList = (ListView)findViewById(R.id.simpleListView);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_building__selection, R.id.textView, buildings);
@@ -120,7 +116,6 @@ public class ListViewBuildings extends AppCompatActivity {
                         returnIntent.putExtra("building_days_selected",checked_days);
 
                         setResult(Schedule_Input.RESULT_OK, returnIntent);
-
                         finish();
                     }
                 });
@@ -128,38 +123,6 @@ public class ListViewBuildings extends AppCompatActivity {
                 builder.setView(mView);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-//                builder.setTitle("Add Building")
-////                .setMessage("What days do you go to this building?")
-//                .setMultiChoiceItems(days, checked_days, new DialogInterface.OnMultiChoiceClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-//                        // Update the current focused item's checked status
-//                        checked_days[which] = isChecked;
-////                        tiemPicker();
-////                        // Get the current focused item
-////                        String currentItem = colorsList.get(which);
-////                        // Notify the current action
-////                        Toast.makeText(getApplicationContext(),
-////                                currentItem + " " + isChecked, Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                })
-//                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String txt = buildings[p];
-//                        Intent returnIntent = new Intent();
-//                        returnIntent.putExtra("building_name", txt);
-//                        setResult(Schedule_Input.RESULT_OK, returnIntent);
-////                        finish();
-//                    }
-//                })
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // do nothing
-//                    }
-//                })
-//                .show();
             }
         });
     }

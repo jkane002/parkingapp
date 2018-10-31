@@ -12,34 +12,70 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.andrewcruz.parking_app.Buildings;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingAdapter extends ArrayAdapter<Buildings> {
+
+    private int resourceLayout;
     private Context mContext;
-    private List<Buildings> buildingsList = new ArrayList<>();
 
-    public BuildingAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<Buildings> list) {
-        super(context,0,list);
-        mContext = context;
-        buildingsList = list;
+    public BuildingAdapter(Context context, int resource, List<Buildings> items) {
+        super(context, resource, items);
+        this.resourceLayout = resource;
+        this.mContext = context;
     }
 
-
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.activity_list_view_buildings,parent,false);
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        Buildings currBldg = buildingsList.get(position);
-        TextView name = (TextView) listItem.findViewById(R.id.textView);
-        name.setText(currBldg.getLocation());
+        View v = convertView;
 
-        return listItem;
+        if (v == null) {
+            LayoutInflater vi;
+            vi = LayoutInflater.from(mContext);
+            v = vi.inflate(resourceLayout, null);
+        }
+
+        Buildings p = getItem(position);
+
+
+//        Set TextBoxes
+        if (p != null) {
+            TextView name = (TextView) v.findViewById(R.id.building_name);
+            TextView time = (TextView) v.findViewById(R.id.building_time);
+            TextView days = (TextView) v.findViewById(R.id.building_days);
+
+//            Set BUilding Name
+            if (name != null) {
+                name.setText(p.getBuildingName());
+            }
+
+//            Set Time
+            if (time != null) {
+                String t = "";
+                String h = Integer.toString(p.getHour());
+                String m = Integer.toString(p.getMinute());
+
+                t = h + ":" + m;
+                time.setText(t);
+            }
+//             Set Days
+            if (days != null) {
+                boolean[] d = p.getDays();
+                String day = "";
+                String[] sDay = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+                for(int i = 0; i < 7; i++) {
+                    if(d[i]) {
+                        day += sDay[i];
+                        day += " ";
+                    }
+                }
+
+                days.setText(day);
+            }
+        }
+
+        return v;
     }
 
-};
+}

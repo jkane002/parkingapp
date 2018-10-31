@@ -3,38 +3,39 @@ package com.example.andrewcruz.parking_app;
 public class Buildings {
         private String building;
         private String location;
-        private int time;
+        private int hTime;
+        private int mTime;
 //        1 means class on day; 0 means no class on day
         private boolean[] days;
 
         public Buildings() {
-            building = "";
-            location = "";
-            time = -1;
+            building = "EMPTY";
+            location = "EMPTY";
+            hTime = -1;
+            mTime = -1;
             days = new boolean[7];
         }
 
-        public Buildings(String b, String l, int t, boolean[] d) {
+        public Buildings(String b, String l, int th,int tm, boolean[] d) {
             building = b;
             location = l;
-            time = t;
+            hTime = th;
+            mTime = tm;
             days = d;
         }
 
-        public String getLocation() {
-            return location;
-        }
+//        Getters
+        public String getLocation() {return location;}
 
-        public String getBuildingName() {
-            return building;
-        }
+        public String getBuildingName() {return building;}
 
-        public int getTime() {
-        return time;
-    }
+        public int getHour() {return hTime;}
+
+        public int getMinute() {return mTime;}
 
         public boolean[] getDays() {return days;}
 
+//        Setters
         public void setLocation(String l) {
             location = l;
         }
@@ -43,14 +44,12 @@ public class Buildings {
             building = b;
         }
 
-        public void setTime(int t) {time = t;}
+        public void setHour(int h) {
+            hTime = h;
+        }
 
-        public void setDays(int i, boolean new_day) {
-            if(i >= 7) {
-                return;
-            }
-
-            days[i] = new_day;
+        public void setMinute(int m) {
+            mTime = m;
         }
 
         public void setDays(boolean[] d) {
