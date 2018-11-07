@@ -1,5 +1,6 @@
 package com.example.andrewcruz.parking_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,8 +31,7 @@ public class Schedule_Input extends AppCompatActivity {
     ListView schedule_input_list;
     BuildingAdapter userBuildings;
     ArrayList<Buildings> userBuildingList = new ArrayList<Buildings>();
-
-    static String MY_PREFS_NAME = "MyPrefsFile";
+    int listSize;
 
 
     @Override
@@ -41,9 +41,8 @@ public class Schedule_Input extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        Update Building Adapter
-//        updateLocalDataSet(userBuildingList);
-
+//        LOAD IF ANY DATA ON FILE
+        load();
 
 //        Get Add Building Button from view
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
@@ -74,44 +73,58 @@ public class Schedule_Input extends AppCompatActivity {
                 boolean days[] = data.getBooleanArrayExtra("building_days_selected");
                 updateList(name,timeH,timeM,days);
             }
-            if (resultCode == Schedule_Input.RESULT_CANCELED) {}
+            if (resultCode == Schedule_Input.RESULT_CANCELED) {
+//                DO NOTHING
+            }
         }
     }
 
-//    Used to update list of buldings automatically after user returns from selecting
     protected void updateList(String name, int timeH, int timeM, boolean[] days) {
-//        Create new building;
         String location = "NONE FOUND";
         Buildings b1 = new Buildings(name,location,timeH,timeM,days);
         userBuildingList.add(b1);
+        save(b1, userBuildingList.size() - 1);
         userBuildings.notifyDataSetChanged();
-
-//        updateLocalDataSet(userBuildingList);
     }
 
-//    //Updates local data of
-//    protected void updateLocalDataSet(ArrayList<Buildings> userBuild) {
-////        if(userBuild != userBuildingList) {
-////            Log.d(TAG, "***********NOT THE SAME LIST**************");
-////        } else {
-////            Log.d(TAG, "***********THE SAME LIST******************");
-////        }
-//
-//        SharedPreferences settings = getApplicationContext().getSharedPreferences(MY_PREFS_NAME,MODE_PRIVATE);
-//        SharedPreferences.Editor editor = settings.edit();
-//
-//        int index = userBuildingList.size() - 1;
-//
-//        editor.putString("building_name" + index, userBuildingList.get(index).getBuildingName());
-//        editor.putString("building_location" + index, userBuildingList.get(index).getLocation());
-//        editor.putInt("building_name" + index, userBuildingList.get(index).getHour());
-//        editor.putInt("building_name" + index, userBuildingList.get(index).getMinute());
-//        editor.putB("building_name" + index, userBuildingList.get(index).getDays());
-//
-//        editor.apply();
-//
-//
-//    }
+    protected void save(Buildings b, int i) {
+        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mySp.edit();
+        editor.putString("Name_" + i, b.getBuildingName());
+        editor.putInt("TimeH_" + i, b.getHour());
+        editor.putInt("timeM_" + i, b.getMinute());
+        editor.putString("location_" + i, b.getLocation());
+        boolean d[] = b.getDays();
+        for (int j = 0; j < 7; j++) {
+            editor.putBoolean("days_" + i + "_" + j, d[j]);
+        }
+        listSize++;
+        editor.putInt("List_Size", listSize);
+        editor.apply();
+    }
+
+
+    protected void load() {
+        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+        listSize = mySp.getInt("List_Size", 0);
+
+
+        for(int i = 0; i < listSize; i++) {
+            String n = mySp.getString("Name_" + i, "N/A");
+            int th = mySp.getInt("TimeH_" + i, -1);
+            int tm = mySp.getInt("timeM_" + i, -1);
+            String l = mySp.getString("location_" + i, "N/A");
+            boolean d[] = new boolean[7];
+            for(int j = 0; j < 7; j++) {
+                d[j] = mySp.getBoolean("days_" + i + "_" + j, false);
+            }
+
+            Buildings b = new Buildings(n,l, th, tm, d);
+
+            userBuildingList.add(b);
+        }
+    }
+
 
 
 
