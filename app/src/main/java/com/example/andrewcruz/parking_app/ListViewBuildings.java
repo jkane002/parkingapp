@@ -36,7 +36,7 @@ public class ListViewBuildings extends AppCompatActivity {
     private static final String tag = "ListViewBuilding Act";
     ListView simpleList;
     String[] buildings = {"Bourns Hall", "Boyce Hall", "CHASS INT NORTH", "CHASS INT SOUTH", "CHUNG HALL",
-            "HUMANITIES/SOCIAL SCIENCE", "LIFE SCIRENCES", "MATERIAL SCIENCE & ENGINEERING", "OLMSTED HALL",
+            "HUMANITIES/SOCIAL SCIENCE", "LIFE SCIENCES", "MATERIAL SCIENCE & ENGINEERING", "OLMSTED HALL",
             "PHYSICS", "PIERCE HALL", "SPROUL HALL", "SKYE", "SURGE FACILITY", "SPIETH HALL", "UV THEATER",
             "UNLH", "WATKINS"};
     String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};

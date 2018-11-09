@@ -7,6 +7,7 @@ public class Buildings {
         private int mTime;
 //        1 means class on day; 0 means no class on day
         private boolean[] days;
+        private String key;
 
         public Buildings() {
             building = "EMPTY";
@@ -14,6 +15,7 @@ public class Buildings {
             hTime = -1;
             mTime = -1;
             days = new boolean[7];
+            key = "EMPTY";
         }
 
         public Buildings(String b, String l, int th,int tm, boolean[] d) {
@@ -22,6 +24,7 @@ public class Buildings {
             hTime = th;
             mTime = tm;
             days = d;
+            key = "EMPTY";
         }
 
 //        Getters
@@ -34,6 +37,8 @@ public class Buildings {
         public int getMinute() {return mTime;}
 
         public boolean[] getDays() {return days;}
+
+        public String getKey() { return key; }
 
 //        Setters
         public void setLocation(String l) {
@@ -55,4 +60,6 @@ public class Buildings {
         public void setDays(boolean[] d) {
             days = d;
         }
+
+        public void setKey(String k) { key = k; }
 }
