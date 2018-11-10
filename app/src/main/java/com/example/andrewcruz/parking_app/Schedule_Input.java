@@ -30,12 +30,12 @@ import java.util.Objects;
 
 
 public class Schedule_Input extends AppCompatActivity {
-//    TAG for debugging
-    private static final String TAG = "Schedule Input Activity";
 //    List View Object for USer class list
     ListView schedule_input_list;
+//    Custom Building Adapter for Building Class
     BuildingAdapter userBuildings;
     ArrayList<Buildings> userBuildingList = new ArrayList<Buildings>();
+//    Used to keep track of List Size of needed some day
     int listSize;
 
 
@@ -46,20 +46,17 @@ public class Schedule_Input extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        LOAD IF ANY DATA ON FILE
+//        Load preexisting user schedule
         load();
-
 //        Get Add Building Button from view
         Button bldging_bttn = (Button) findViewById(R.id.add_building);
-//        Get Remove Building Button
-
 //        Create the empty list for the classes
         schedule_input_list = (ListView) findViewById(R.id.list_view_schedule);
-
+//          Init Custom Building Adapter
         userBuildings = new BuildingAdapter(this, R.layout.activity_user__class__location__list, userBuildingList);
+//        Set Adapter
         schedule_input_list.setAdapter(userBuildings);
-
-
+//        Set OnClick() for Add Building Button in View
         bldging_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +66,14 @@ public class Schedule_Input extends AppCompatActivity {
         });
     }
 
-//   Function that handles return from activity after selecting a building location
+/*  Function that handles return from activity after selecting a building location
+    @Param
+        int requestCode: code that determines the request
+        int resultCode: code that determines the exiting from previous activity
+        Intent data: data passed in from previous activity
+    @Return
+        void function
+*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
@@ -86,6 +90,17 @@ public class Schedule_Input extends AppCompatActivity {
         }
     }
 
+/*    Function that updates the ListArray<Building> Adapter when new building is selected
+      @Param:
+        String Name: Building Name
+        int timeH: Hour time selected
+        int timeM: Minute time selected
+        boolean[] days: Days selected, True means class on day
+      @Return:
+        void
+      @Note:
+        Include String or Int location in Param when Google maps is integrated
+ */
     protected void updateList(String name, int timeH, int timeM, boolean[] days) {
         String location = "NONE FOUND";
         Buildings b1 = new Buildings(name,location,timeH,timeM,days);
@@ -96,16 +111,24 @@ public class Schedule_Input extends AppCompatActivity {
             else
                 d.append("F");
         }
-        int k = (timeH + timeH);
+        int k = (timeH + timeM);
         b1.setKey(name.substring(0,3) + Integer.toString(k) + d);
         userBuildingList.add(b1);
         save(b1);
         userBuildings.notifyDataSetChanged();
     }
 
+/*    Function that saves the building into Shared Prefrences File
+      @Param:
+        Building b: Building Class Object selected by user
+      @Return:
+        void
+ */
     protected void save(Buildings b) {
+//        Get Shared prefs
         SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mySp.edit();
+//        Put Keys and values into Shared Prefs
         editor.putString(b.getKey() + "_Name", b.getBuildingName());
         editor.putInt(b.getKey() + "_TimeH" , b.getHour());
         editor.putInt(b.getKey() + "_TimeM" , b.getMinute());
@@ -116,14 +139,24 @@ public class Schedule_Input extends AppCompatActivity {
         }
         listSize++;
         editor.putInt("List_Size", listSize);
+//        Apply Changes
         editor.apply();
     }
 
-
+/*    Function that Loads the Current Saved Buildings from Shared Prefs into ListArray<Building> and updates BuildingAdapter
+      @Param:
+       void
+      @Return:
+        void
+ */
     protected void load() {
+//        Get Shared Prefs
         SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+//        Get Building List Size
         listSize = mySp.getInt("List_Size", 0);
 
+//        Get All Elements from Current Shared Prefs
+//        Only Save first part of key that corresponds to building
         ArrayList<String> keys = new ArrayList<>();
         Map<String, ?> allEntries = mySp.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
@@ -132,23 +165,29 @@ public class Schedule_Input extends AppCompatActivity {
                 keys.add(comp);
             }
         }
-
-
+//        Create the building objects to load into ArrayList<Building>
         for(int i = 0; i < keys.size(); i++) {
             String n = mySp.getString(keys.get(i) + "_Name", "N/A");
             int th = mySp.getInt(keys.get(i) + "_TimeH", -1);
             int tm = mySp.getInt(keys.get(i) + "_TimeM", -1);
-            String l = mySp.getString("keys.get(i) + _Location_" + i, "N/A");
+            String l = mySp.getString("keys.get(i) + _Location", "N/A");
             boolean d[] = new boolean[7];
             for(int j = 0; j < 7; j++) {
                 d[j] = mySp.getBoolean(keys.get(i) + "_Days_" + j, false);
-                Log.d("*******************", keys.get(i) +  Boolean.toString(d[j]));
             }
-
+//            Create building obj
             Buildings b = new Buildings(n,l, th, tm, d);
-
+            int k = (tm + th);
+            StringBuilder dys = new StringBuilder();
+            for(int j = 0; j < 7; j++) {
+                if(d[j])
+                    dys.append("T");
+                else
+                    dys.append("F");
+            }
+            String ke = n.substring(0,3) + Integer.toString(k) + dys;
+            b.setKey(n.substring(0,3) + Integer.toString(k) + dys);
             userBuildingList.add(b);
-            Log.d("KEYS*********", keys.get(i));
         }
     }
 

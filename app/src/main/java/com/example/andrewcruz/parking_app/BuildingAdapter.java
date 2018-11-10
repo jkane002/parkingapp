@@ -104,7 +104,7 @@ public class BuildingAdapter extends ArrayAdapter<Buildings> {
                 }
                 days.setText(day);
             }
-
+//            final ViewGroup par = parent;
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -121,17 +121,15 @@ public class BuildingAdapter extends ArrayAdapter<Buildings> {
 
     // Method for remove an item of ListView inside adapter class
     // you need to pass as an argument the tag you added to the layout of your choice
-    private void removeView(int position) {
+    private void removeView(int position ) {
         SharedPreferences mySp = mContext.getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mySp.edit();
-        Log.d(TAG, "***********************");
-        Log.d(TAG, String.valueOf(position));
-        Log.d(TAG, "***********************");
 
         editor.remove(b.get(position).getKey() + "_Name");
         editor.remove(b.get(position).getKey() +"_TimeH");
         editor.remove(b.get(position).getKey() +"_TimeM");
         editor.remove(b.get(position).getKey() +"_Location");
+        getItem(position).print();
         for(int j = 0; j < 7; j++) {
             editor.remove(b.get(position).getKey() + "_Days_" + j);
         }
@@ -139,7 +137,7 @@ public class BuildingAdapter extends ArrayAdapter<Buildings> {
         listSize--;
         editor.putInt("List_Size", listSize);
         editor.apply();
-
+        Log.d(TAG, "***********************");
         b.remove(position);
         notifyDataSetChanged();
     }

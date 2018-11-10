@@ -1,5 +1,8 @@
 package com.example.andrewcruz.parking_app;
 
+import android.os.Debug;
+import android.util.Log;
+
 public class Buildings {
         private String building;
         private String location;
@@ -62,4 +65,16 @@ public class Buildings {
         }
 
         public void setKey(String k) { key = k; }
+
+        public void print() {
+            Log.d("************", "Building Class Print: ");
+            Log.d("BUILDING:", this.building);
+            Log.d("LOCATION:", this.location);
+            Log.d("HTIME:", Integer.toString(this.hTime));
+            Log.d("MTIME:", Integer.toString(this.mTime));
+            for(int i = 0; i < 7; i++)
+                Log.d("DAY " + i, Boolean.toString(this.days[i]));
+            Log.d("Key:", this.key);
+        }
+
 }
