@@ -25,4 +25,5 @@
     <string name="taps">TAPS</string>
     <string name="title_activity_list__main">List_Main</string>
     <string name="remove_class">Remove Class</string>
+    <string name="title_activity_map">Map</string>
 </resources>

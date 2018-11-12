@@ -23,7 +23,7 @@ import android.widget.TextView;
             setContentView(R.layout.activity_main);
             listView = (ListView)findViewById(R.id.listView);
 
-            final String[] values = new String[]{"Parking List Web View", "Schedule Input", "TAPS Information"};
+            final String[] values = new String[]{"Parking List Web View", "Schedule Input", "TAPS Information", "Map"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.activity_list__main,android.R.id.text1, values);
 
@@ -44,6 +44,10 @@ import android.widget.TextView;
                     if (position == 2) {
                         Intent myintent  = new Intent(view.getContext(), Taps_View.class );
                         startActivityForResult(myintent,2);
+                    }
+                    if (position == 3) {
+                        Intent myIntent = new Intent(view.getContext(), MapActivity.class);
+                        startActivity(myIntent);
                     }
                 }
             });
