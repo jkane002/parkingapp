@@ -9,11 +9,13 @@
     tools:context=".splash_screen">
 
     <ImageView
-        android:layout_width="200sp"
-        android:layout_height="200sp"
-        android:layout_centerInParent= "true"
-        android:src = "@drawable/ucrbearhead"
-        android:id="@+id/imageView"/>
+        android:id="@+id/imageView"
+        android:layout_width="250sp"
+        android:layout_height="250sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:src="@drawable/ucrbearhead" />
 
 
     <TextView
@@ -21,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:text="Parking App"
-        android:textSize="30sp"
-        android:textColor="@android:color/black"
-        />
+        android:layout_marginBottom="150dp"
+        android:text="Welcome"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
