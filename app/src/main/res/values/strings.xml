@@ -26,4 +26,13 @@
     <string name="title_activity_list__main">List_Main</string>
     <string name="remove_class">Remove Class</string>
     <string name="title_activity_map">Map</string>
+    <string-array name="parking_lots">
+        <item>Select Parking Lot</item>
+        <item>Big Springs Structure</item>
+        <item>Lot 6</item>
+        <item>Lot 24</item>
+        <item>Lot 26</item>
+        <item>Lot 30</item>
+        <item>Lot 32</item>
+    </string-array>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.andrewcruz.parking_app;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,14 +14,26 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-    public class MainActivity extends AppCompatActivity {
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
+public class MainActivity extends AppCompatActivity {
         ListView listView;
-        //  TextView textview;
+        private static final int ERROR_DIALOG_REQUEST = 9001;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
+            if(isServicesOK()) {
+                init();
+            }
+        }
+
+
+        private void init() {
             listView = (ListView)findViewById(R.id.listView);
 
             final String[] values = new String[]{"Parking List Web View", "Schedule Input", "TAPS Information", "Map"};
@@ -51,6 +64,21 @@ import android.widget.TextView;
                     }
                 }
             });
+        }
+
+        public boolean isServicesOK() {
+            int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+
+            if(available == ConnectionResult.SUCCESS) {
+                return true;
+            }
+            else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
+                Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, ERROR_DIALOG_REQUEST);
+                dialog.show();
+            }else {
+                Toast.makeText(this, "You can't make map request", Toast.LENGTH_SHORT).show();
+            }
+            return false;
         }
     }
 
