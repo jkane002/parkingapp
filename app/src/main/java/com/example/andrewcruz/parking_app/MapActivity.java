@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +43,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMIT_CODE = 1234;
 
+
+    private Marker mMarker;
     private Boolean mLocationPermissionGranted = false;
 //    Big Springs, Lot 6, Lot 24, Lot 26, Lot 30, Lot 32
     double lat[] = {33.9756387,33.969771,33.9780886,33.9816032,33.9695745,33.969195};
@@ -48,12 +52,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 //    Widgets
     private Spinner mSpinner;
+    private ImageView mGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         init_spinner();
+        mGps = (ImageView) findViewById(R.id.ic_gps);
+        mGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDeviceLocation();
+            }
+        });
         getLocationPermission();
     }
 
@@ -107,7 +119,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void geoLocate(int i, String cur) {
-        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur);
+        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, -1);
     }
 
     private void initMap() {
@@ -164,17 +176,34 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
     }
 
+    private void MoveCamera(LatLng latLng, float zoom, String title, int spots) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        mMap.clear();
+
+        String snippet = "Available spots: " + Integer.toString(spots);
+
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .title(title)
+                .snippet(snippet);
+        mMarker = mMap.addMarker(options);
+        mMarker.showInfoWindow();
+//        mMap.addMarker(options);
+    }
+
 
     private void MoveCamera(LatLng latLng, float zoom, String title) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
+        mMap.clear();
         if(!title.equals("Current Location")) {
 
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
                     .title(title);
 
-            mMap.addMarker(options);
+            mMarker = mMap.addMarker(options);
         }
     }
 
