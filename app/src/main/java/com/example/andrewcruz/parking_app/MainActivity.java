@@ -3,8 +3,11 @@ package com.example.andrewcruz.parking_app;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,20 +24,53 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity {
         ListView listView;
+
         private static final int ERROR_DIALOG_REQUEST = 9001;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
+
+            BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+            bottomNav.setOnNavigationItemSelectedListener(navListener);
+
             if(isServicesOK()) {
                 init();
             }
-        }
+        } //end of oncreate
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    Fragment selectedFragment = null;
+
+                    switch(menuItem.getItemId()) {
+
+                        case R.id.navigation_schedule:
+                            selectedFragment = new ScheduleFragment();
+                            Intent intent = new Intent();
+                            break;
+                        case R.id.navigation_info:
+                            selectedFragment = new InfoFragment();
+                            break;
+                        case R.id.navigation_home:
+                            selectedFragment = new HomeFragment();
+                            break;
+
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true;
+                }
+            };
 
 
         private void init() {
             listView = (ListView)findViewById(R.id.listView);
+            listView.setVisibility(View.GONE);
 
             final String[] values = new String[]{"Parking List Web View", "Schedule Input", "TAPS Information", "Map"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
