@@ -160,9 +160,11 @@ public class Schedule_Input extends AppCompatActivity {
         ArrayList<String> keys = new ArrayList<>();
         Map<String, ?> allEntries = mySp.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            String comp = entry.getKey().substring(0, entry.getKey().indexOf('_'));
-            if(!exist(keys,comp) && !comp.equals("List")) {
-                keys.add(comp);
+            if(!check(entry.getKey())) {
+                String comp = entry.getKey().substring(0, entry.getKey().indexOf('_'));
+                if (!exist(keys, comp) && !comp.equals("List")) {
+                    keys.add(comp);
+                }
             }
         }
 //        Create the building objects to load into ArrayList<Building>
@@ -198,4 +200,16 @@ public class Schedule_Input extends AppCompatActivity {
         }
         return false;
     }
+
+    private boolean check(String s) {
+        String[] g = {"BSP", "Lot 6","Lot 24", "Lot 26","Lot 30", "Lot 32"};
+
+        for(int i = 0; i < g.length; i++) {
+            if(s.equals(g[i]))
+                return true;
+        }
+
+        return false;
+    }
+
 }

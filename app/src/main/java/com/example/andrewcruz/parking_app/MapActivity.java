@@ -123,9 +123,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private void geoLocate(int i, String cur) {
         String[] spors = {"BSP", "Lot 6", "Lot 24", "Lot 26", "Lot 30", "Lot 32"};
         SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
-        int s = mySp.getInt(spors[i], -1);
-
-        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, -1);
+        String s = mySp.getString(spors[i], "-1");
+        int s1 = Integer.parseInt(s);
+        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, s1);
     }
 
     private void initMap() {
