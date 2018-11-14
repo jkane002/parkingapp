@@ -1,7 +1,11 @@
 package com.example.andrewcruz.parking_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.renderscript.ScriptGroup;
+import android.util.Log;
 
 
 import org.json.JSONArray;
@@ -37,6 +41,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     String results6 = "";
 
     String time = "Last Updated: ";
+
     @Override
     protected Void doInBackground(Void... voids) {
         try {
@@ -56,6 +61,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             Big_Springs_Spaces = Big_Springs_Spaces.substring(index_of_Spaces, offset);
             results = Big_Springs_Spaces.replaceAll("[^0-9]", "");
             Big_Springs_Spaces = results;
+
 
             URL lot6_url = new URL("https://streetsoncloud.com/parking/rest/occupancy/id/238?callback=myCallback");
             HttpURLConnection httpURLConnection_lot_6 = (HttpURLConnection)lot6_url.openConnection();
@@ -169,6 +175,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         Parking_View.lot_26_spaces.setText(this.Lot_26_Spaces);
         Parking_View.lot_30_spaces.setText(this.Lot_30_Spaces);
         Parking_View.lot_32_spaces.setText(this.Lot_32_Spaces);
+
 //        ParseActivity.big_springs_spaces.setPadding(0,0,0,0);
 //        ParseActivity.lot_6_spaces.setPadding(55,0,0,0);
 //        ParseActivity.lot_24_spaces.setPadding(55,0,0,0);

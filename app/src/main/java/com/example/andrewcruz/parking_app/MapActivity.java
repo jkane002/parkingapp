@@ -1,6 +1,8 @@
 package com.example.andrewcruz.parking_app;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Geocoder;
@@ -58,7 +60,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        init_spinner();
         mGps = (ImageView) findViewById(R.id.ic_gps);
         mGps.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
         getLocationPermission();
+        init_spinner();
     }
 
     private void init_spinner() {
@@ -119,6 +121,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void geoLocate(int i, String cur) {
+        String[] spors = {"BSP", "Lot 6", "Lot 24", "Lot 26", "Lot 30", "Lot 32"};
+        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+        int s = mySp.getInt(spors[i], -1);
+
         MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, -1);
     }
 
@@ -177,6 +183,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void MoveCamera(LatLng latLng, float zoom, String title, int spots) {
+        Log.d("*********", "HERE");
+        Log.d("LatLng", latLng.toString());
+
+
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
         mMap.clear();
@@ -220,7 +230,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }else {
             ActivityCompat.requestPermissions(this, permisssions, LOCATION_PERMIT_CODE);
         }
-
+        initMap();
     }
 
     @Override
