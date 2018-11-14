@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
   //  TextView textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         listView = (ListView)findViewById(R.id.listView);
+        listView.setVisibility(View.GONE);
 
         final String[] values = new String[]{"Schedule Input", "Parking List Web View", "taps Information"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
