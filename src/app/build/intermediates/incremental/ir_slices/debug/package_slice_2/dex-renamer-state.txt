@@ -1,0 +1,4 @@
+#Wed Oct 24 11:17:47 PDT 2018
+base.0=/Users/jkaneshiro/Desktop/code/parkingapp/app/build/intermediates/transforms/dexMerger/debug/2
+path.0=classes.dex
+renamed.0=classes.dex
