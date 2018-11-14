@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JSONP</string>
+    <string name="update">Update</string>
+    <string name="tap">Tap Update!</string>
+    <string name="big_springs_location">Big Springs Structure  </string>
+    <string name="Lot_6">Lot 6</string>
+    <string name="Lot_24">Lot 24</string>
+    <string name="Lot_26">Lot 26</string>
+    <string name="Lot_30">Lot 30</string>
+    <string name="Lot_32">Lot 32</string>
+    <string name="Time">Last Updated: </string>
+    <string name="Blank"> </string>
+</resources>

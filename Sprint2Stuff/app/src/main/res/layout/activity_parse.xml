@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParseActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/update"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-39dp"
+        android:padding="5dp"
+        android:text="@string/Time"
+        android:textSize="12sp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="51dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/Big_Springs_Structure"
+                android:layout_width="171dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/big_springs_location"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="16dp"
+                android:layout_height="29dp" />
+
+            <TextView
+                android:id="@+id/Big_Springs_Spaces"
+                android:layout_width="138dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:text="@string/tap"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="363dp"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/Lot_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/Lot_6"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Lot_6_Spaces"
+                android:layout_width="57dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:text="@string/tap"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/Lot_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/Lot_24"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Lot_24_Spaces"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/tap"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/Lot_26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/Lot_26"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Lot_26_Spaces"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/tap"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/Lot_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/Lot_30"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Lot_30_Spaces"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/tap"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/Lot_32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/table_border"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="24dp"
+                android:text="@string/Lot_32"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Lot_32_Spaces"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/tap"
+                android:background="@drawable/space_border"
+                android:gravity="bottom|center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>
