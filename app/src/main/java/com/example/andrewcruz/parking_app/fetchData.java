@@ -169,12 +169,12 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        Parking_View.big_springs_spaces.setText(this.Big_Springs_Spaces);
-        Parking_View.lot_6_spaces.setText(this.Lot_6_Spaces);
-        Parking_View.lot_24_spaces.setText(this.Lot_24_Spaces);
-        Parking_View.lot_26_spaces.setText(this.Lot_26_Spaces);
-        Parking_View.lot_30_spaces.setText(this.Lot_30_Spaces);
-        Parking_View.lot_32_spaces.setText(this.Lot_32_Spaces);
+        MainActivity.big_springs_spaces.setText(this.Big_Springs_Spaces);
+        MainActivity.lot_6_spaces.setText(this.Lot_6_Spaces);
+        MainActivity.lot_24_spaces.setText(this.Lot_24_Spaces);
+        MainActivity.lot_26_spaces.setText(this.Lot_26_Spaces);
+        MainActivity.lot_30_spaces.setText(this.Lot_30_Spaces);
+        MainActivity.lot_32_spaces.setText(this.Lot_32_Spaces);
 
 //        ParseActivity.big_springs_spaces.setPadding(0,0,0,0);
 //        ParseActivity.lot_6_spaces.setPadding(55,0,0,0);
@@ -182,6 +182,6 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
 //        ParseActivity.lot_26_spaces.setPadding(55,0,0,0);
 //        ParseActivity.lot_30_spaces.setPadding(55,0,0,0);
 //        ParseActivity.lot_32_spaces.setPadding(55,0,0,0);
-        Parking_View.time.setText(this.time);
+        MainActivity.time.setText(this.time);
     }
 }

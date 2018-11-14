@@ -2,18 +2,22 @@ package com.example.andrewcruz.parking_app;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,7 +40,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends MainActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -69,6 +73,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         });
         getLocationPermission();
         init_spinner();
+        init_bar();
     }
 
     private void init_spinner() {
@@ -251,5 +256,41 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 }
             }
         }
+    }
+
+    private void init_bar() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ic_parking:
+                        Intent i0 = new Intent(MapActivity.this, MainActivity.class);
+                        startActivity(i0);
+                        break;
+
+                    case R.id.ic_map:
+                        break;
+
+                    case R.id.ic_schedule:
+                        Intent i2 = new Intent(MapActivity.this, Schedule_Input.class);
+                        startActivity(i2);
+                        break;
+
+                    case R.id.ic_info:
+                        Intent i3 = new Intent(MapActivity.this, Taps_View.class);
+                        startActivity(i3);
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 }

@@ -99,5 +99,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="parking_spaces">Parking Spaces</string>
+    <string name="class_schedule">Class Schedule</string>
+    <string name="taps_info">TAPS Info</string>
 
 </resources>
