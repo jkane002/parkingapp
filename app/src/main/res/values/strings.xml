@@ -95,4 +95,9 @@
     <string name="Lot_32">Lot 32</string>
     <string name="Time">Last Updated: </string>
     <string name="Blank"> </string>
+    <string name="title_activity_bottomnav">bottomnav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>
