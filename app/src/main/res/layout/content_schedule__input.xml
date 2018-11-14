@@ -16,11 +16,9 @@
         <Button
             android:id="@+id/add_building"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="10pt"
             android:layout_weight="1"
-            android:text="@string/add_building_str"
-            tools:layout_editor_absoluteX="249dp"
-            tools:layout_editor_absoluteY="39dp" />
+            android:text="@string/add_building_str"/>
 
         <ListView
             android:id="@+id/list_view_schedule"

@@ -26,6 +26,7 @@
     <string name="title_activity_list__main">List_Main</string>
     <string name="remove_class">Remove Class</string>
     <string name="title_activity_map">Map</string>
+    <string name="building_name">Building_name</string>
     <string-array name="parking_lots">
         <item>Select Parking Lot</item>
         <item>Big Springs Structure</item>
@@ -34,5 +35,54 @@
         <item>Lot 26</item>
         <item>Lot 30</item>
         <item>Lot 32</item>
+    </string-array>
+    <string-array name="building_names">
+        <item>Bourns Hall</item>
+        <item>Boyce Hall</item>
+        <item>CHASS INT NORTH</item>
+        <item>CHASS INT SOUTH</item>
+        <item>CHUNG HALL</item>
+        <item>HUMANITIES/SOCIAL SCIENCE</item>
+        <item>LIFE SCIENCES</item>
+        <item>MATERIAL SCIENCE AND ENGINEERING</item>
+        <item>OLMSTED HALL</item>
+        <item>PHYSICS</item>
+        <item>PIERCE HALL</item>
+        <item>SPROUL HALL</item>
+        <item>SKYE</item>
+        <item>SURGE FACILITY</item>
+        <item>SPIETH HALL</item>
+        <item>THEATER</item>
+        <item>UNLH</item>
+        <item>WATKINS"</item>
+    </string-array>
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string-array name="images">
+        <item>R.drawable.bourns</item>
+        <item>R.drawable.boyce_hall</item>
+        <item>CHASS INT NORTH</item>
+        <item>CHASS INT SOUTH</item>
+        <item>CHUNG HALL</item>
+        <item>HUMANITIES/SOCIAL SCIENCE</item>
+        <item>LIFE SCIENCES</item>
+        <item>MATERIAL SCIENCE AND ENGINEERING</item>
+        <item>OLMSTED HALL</item>
+        <item>PHYSICS</item>
+        <item>PIERCE HALL</item>
+        <item>SPROUL HALL</item>
+        <item>SKYE</item>
+        <item>SURGE FACILITY</item>
+        <item>SPIETH HALL</item>
+        <item>THEATER</item>
+        <item>UNLH</item>
+        <item>WATKINS"</item>
     </string-array>
 </resources>

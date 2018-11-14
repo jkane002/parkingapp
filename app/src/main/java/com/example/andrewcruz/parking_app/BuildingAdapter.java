@@ -104,7 +104,8 @@ public class BuildingAdapter extends ArrayAdapter<Buildings> {
                 }
                 days.setText(day);
             }
-//            final ViewGroup par = parent;
+
+            //            final ViewGroup par = parent;
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

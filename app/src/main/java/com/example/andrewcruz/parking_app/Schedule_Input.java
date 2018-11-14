@@ -30,12 +30,12 @@ import java.util.Objects;
 
 
 public class Schedule_Input extends AppCompatActivity {
-//    List View Object for USer class list
+    //    List View Object for USer class list
     ListView schedule_input_list;
-//    Custom Building Adapter for Building Class
+    //    Custom Building Adapter for Building Class
     BuildingAdapter userBuildings;
     ArrayList<Buildings> userBuildingList = new ArrayList<Buildings>();
-//    Used to keep track of List Size of needed some day
+    //    Used to keep track of List Size of needed some day
     int listSize;
 
 
@@ -66,14 +66,14 @@ public class Schedule_Input extends AppCompatActivity {
         });
     }
 
-/*  Function that handles return from activity after selecting a building location
-    @Param
-        int requestCode: code that determines the request
-        int resultCode: code that determines the exiting from previous activity
-        Intent data: data passed in from previous activity
-    @Return
-        void function
-*/
+    /*  Function that handles return from activity after selecting a building location
+        @Param
+            int requestCode: code that determines the request
+            int resultCode: code that determines the exiting from previous activity
+            Intent data: data passed in from previous activity
+        @Return
+            void function
+    */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
@@ -90,17 +90,17 @@ public class Schedule_Input extends AppCompatActivity {
         }
     }
 
-/*    Function that updates the ListArray<Building> Adapter when new building is selected
-      @Param:
-        String Name: Building Name
-        int timeH: Hour time selected
-        int timeM: Minute time selected
-        boolean[] days: Days selected, True means class on day
-      @Return:
-        void
-      @Note:
-        Include String or Int location in Param when Google maps is integrated
- */
+    /*    Function that updates the ListArray<Building> Adapter when new building is selected
+          @Param:
+            String Name: Building Name
+            int timeH: Hour time selected
+            int timeM: Minute time selected
+            boolean[] days: Days selected, True means class on day
+          @Return:
+            void
+          @Note:
+            Include String or Int location in Param when Google maps is integrated
+     */
     protected void updateList(String name, int timeH, int timeM, boolean[] days) {
         String location = "NONE FOUND";
         Buildings b1 = new Buildings(name,location,timeH,timeM,days);
@@ -118,12 +118,12 @@ public class Schedule_Input extends AppCompatActivity {
         userBuildings.notifyDataSetChanged();
     }
 
-/*    Function that saves the building into Shared Prefrences File
-      @Param:
-        Building b: Building Class Object selected by user
-      @Return:
-        void
- */
+    /*    Function that saves the building into Shared Prefrences File
+          @Param:
+            Building b: Building Class Object selected by user
+          @Return:
+            void
+     */
     protected void save(Buildings b) {
 //        Get Shared prefs
         SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
@@ -143,12 +143,12 @@ public class Schedule_Input extends AppCompatActivity {
         editor.apply();
     }
 
-/*    Function that Loads the Current Saved Buildings from Shared Prefs into ListArray<Building> and updates BuildingAdapter
-      @Param:
-       void
-      @Return:
-        void
- */
+    /*    Function that Loads the Current Saved Buildings from Shared Prefs into ListArray<Building> and updates BuildingAdapter
+          @Param:
+           void
+          @Return:
+            void
+     */
     protected void load() {
 //        Get Shared Prefs
         SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
