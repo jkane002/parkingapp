@@ -6,7 +6,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textSize="50dp"
-    android:textColor="#0f20b9"
+    android:textColor="#e6e6e9"
+    android:background="#2d6cc0"
     android:typeface="normal"
     >
 

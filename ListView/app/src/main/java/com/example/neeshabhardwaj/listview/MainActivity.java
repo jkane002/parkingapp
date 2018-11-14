@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView)findViewById(R.id.listView);
 
-        final String[] values = new String[]{"Schedule Input", "Parking List Web View", "TAPS Information"};
+        final String[] values = new String[]{"Schedule Input", "Parking List Web View", "taps Information"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                R.layout.mytextviewlayout,android.R.id.text1, values);
 
