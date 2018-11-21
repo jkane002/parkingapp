@@ -15,4 +15,8 @@
     <color name="colorSecondaryTextDefaultMaterialDark">#B3FFFFFF</color>
 
 
+    <color name="colorToolBar">#3F51B5</color>
+    <color name="colorGrey">#c3c3c3</color>
+    <color name="colorWhite">#FFFFFF</color>
+
 </resources>

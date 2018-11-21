@@ -95,4 +95,12 @@
     <string name="Lot_32">Lot 32</string>
     <string name="Time">Last Updated: </string>
     <string name="Blank"> </string>
+    <string name="title_activity_bottomnav">bottomnav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="parking_spaces">Parking Spaces</string>
+    <string name="class_schedule">Class Schedule</string>
+    <string name="taps_info">TAPS Info</string>
+
 </resources>

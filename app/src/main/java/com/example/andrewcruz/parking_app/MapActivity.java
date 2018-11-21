@@ -2,18 +2,22 @@ package com.example.andrewcruz.parking_app;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,11 +40,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends MainActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private static final float DEFAULT_ZOOM = 17f;
+    private static final float DEFAULT_ZOOM = 16f;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMIT_CODE = 1234;
@@ -48,30 +52,120 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     private Marker mMarker;
     private Boolean mLocationPermissionGranted = false;
+
 //    Big Springs, Lot 6, Lot 24, Lot 26, Lot 30, Lot 32
     double lat[] = {33.9756387,33.969771,33.9780886,33.9816032,33.9695745,33.969195};
     double log[] = {-117.32097140000002,-117.32745449999999,-117.33056679999999,-117.33491379999998,-117.33264969999999,-117.330363};
+    String[] spors = {"BSP", "Lot 6", "Lot 24", "Lot 26", "Lot 30", "Lot 32"};
 
-//    Widgets
-    private Spinner mSpinner;
-    private ImageView mGps;
+    /* ON CREATE FUNCTION */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        mGps = (ImageView) findViewById(R.id.ic_gps);
-        mGps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDeviceLocation();
-            }
-        });
         getLocationPermission();
+        set_curr_location();
+    }
+
+
+    /*
+        Gets permission from user to access their location.
+        @param: none
+        @return: none
+     */
+    private void getLocationPermission() {
+        String[] permisssions = {FINE_LOCATION, COARSE_LOCATION};
+
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if(ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
+            } else {
+                ActivityCompat.requestPermissions(this, permisssions, LOCATION_PERMIT_CODE);
+            }
+        }else {
+            ActivityCompat.requestPermissions(this, permisssions, LOCATION_PERMIT_CODE);
+        }
+
+        initMap();
+    }
+
+    /*
+        Initializes google map
+        @param: none
+        @return: none
+     */
+
+    private void initMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        init_bar();
         init_spinner();
     }
 
+//    Sets map to location
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+//        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
+        mMap = googleMap;
+        MoveCamera(new LatLng(33.9737, -117.3281), DEFAULT_ZOOM);
+//        if (mLocationPermissionGranted) {
+//            getDeviceLocation();
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                return;
+//            }
+//            mMap.setMyLocationEnabled(true);
+//            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+//        }
+    }
+
+    /*
+        Initialized bottom navigation bar
+     */
+    private void init_bar() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ic_parking:
+                        Intent i0 = new Intent(MapActivity.this, MainActivity.class);
+                        startActivity(i0);
+                        break;
+
+                    case R.id.ic_map:
+                        break;
+
+                    case R.id.ic_schedule:
+                        Intent i2 = new Intent(MapActivity.this, Schedule_Input.class);
+                        startActivity(i2);
+                        break;
+
+                    case R.id.ic_info:
+                        Intent i3 = new Intent(MapActivity.this, Taps_View.class);
+                        startActivity(i3);
+                        break;
+                }
+
+                return false;
+            }
+        });
+    }
+
+    /*
+        Initializes top spinner
+     */
     private void init_spinner() {
+        Spinner mSpinner;
         mSpinner = (Spinner) findViewById(R.id.parking_lots);
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -120,40 +214,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mSpinner.setAdapter(mAdapter);
     }
 
-    private void geoLocate(int i, String cur) {
-        String[] spors = {"BSP", "Lot 6", "Lot 24", "Lot 26", "Lot 30", "Lot 32"};
-        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
-        int s = mySp.getInt(spors[i], -1);
 
-        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, -1);
-    }
-
-    private void initMap() {
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
-        mMap = googleMap;
-
-        if (mLocationPermissionGranted) {
-            getDeviceLocation();
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
+    private void set_curr_location() {
+        ImageView mGps;
+        mGps = (ImageView) findViewById(R.id.ic_gps);
+        mGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDeviceLocation();
             }
-            mMap.setMyLocationEnabled(true);
-            mMap.getUiSettings().setMyLocationButtonEnabled(false);
-        }
+        });
+    }
 
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(33.9734, -117.3282);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+    private void geoLocate(int i, String cur) {
+        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+        String s = mySp.getString(spors[i], "-1");
+        int s1 = Integer.parseInt(s);
+        MoveCamera(new LatLng(lat[i],log[i]), DEFAULT_ZOOM, cur, s1);
     }
 
     private void getDeviceLocation() {
@@ -169,7 +247,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         if(task.isSuccessful()) {
 //                            SUCCESS
                             Location currentLocation = (Location) task.getResult();
-                            MoveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude() ), DEFAULT_ZOOM, "Current Location");
+                            MoveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude() ), DEFAULT_ZOOM);
                         } else {
 //                            Location Not Found
                             Toast.makeText(MapActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
@@ -203,35 +281,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
 
-    private void MoveCamera(LatLng latLng, float zoom, String title) {
+    private void MoveCamera(LatLng latLng, float zoom) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-
         mMap.clear();
-        if(!title.equals("Current Location")) {
 
+//        ArrayList<MarkerData> markersArray = new ArrayList<MarkerData>();
+        for(int i = 0; i < spors.length; i++) {
+            SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+            String s = mySp.getString(spors[i], "-1");
             MarkerOptions options = new MarkerOptions()
-                    .position(latLng)
-                    .title(title);
-
+                    .position(new LatLng(lat[i],log[i]))
+                    .title(spors[i])
+                    .snippet(s);
             mMarker = mMap.addMarker(options);
+            mMarker.showInfoWindow();
         }
+
     }
 
-    private void getLocationPermission() {
-        String[] permisssions = {FINE_LOCATION, COARSE_LOCATION};
-
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            if(ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                mLocationPermissionGranted = true;
-                initMap();
-            } else {
-                ActivityCompat.requestPermissions(this, permisssions, LOCATION_PERMIT_CODE);
-            }
-        }else {
-            ActivityCompat.requestPermissions(this, permisssions, LOCATION_PERMIT_CODE);
-        }
-        initMap();
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -252,4 +319,5 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         }
     }
+
 }
