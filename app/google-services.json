@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "460901211868",
+    "firebase_url": "https://parking-app-222616.firebaseio.com",
+    "project_id": "parking-app-222616",
+    "storage_bucket": "parking-app-222616.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460901211868:android:44c79f1034b5d37b",
+        "android_client_info": {
+          "package_name": "com.example.andrewcruz.parking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460901211868-4tjmnre0a5fs31blg9vhpdcd5iee79t7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andrewcruz.parking_app",
+            "certificate_hash": "d3051ff19861b53139ed8796307985b1292cf676"
+          }
+        },
+        {
+          "client_id": "460901211868-4hmcvnj4hpm2gn7un82onddck3vtl2ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUTQvzGxawGktHjuiejsnJ2dm66cwPqGE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460901211868-4hmcvnj4hpm2gn7un82onddck3vtl2ci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

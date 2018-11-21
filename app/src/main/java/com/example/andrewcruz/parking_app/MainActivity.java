@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+
+import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
     Button click;
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         time = (TextView)findViewById(R.id.time);
         fetchData process = new fetchData();
         process.execute();
+
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,38 +128,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void save() {
-//        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = mySp.edit();
+        SharedPreferences mySp = getSharedPreferences("User_Building_List", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mySp.edit();
 
-//        String big_springs = big_springs_spaces.getText().toString();
-//        String lot_6 = lot_6_spaces.getText().toString();
-//        String lot_24 = lot_24_spaces.getText().toString();
-//        String lot_26 = lot_26_spaces.getText().toString();
-//        String lot_30 = lot_30_spaces.getText().toString();
-//        String lot_32 = lot_32_spaces.getText().toString();
-//
-//        int i1 = big_springs.indexOf('/');
-//        int i2 = lot_6.indexOf('/');
-//        int i3 = lot_24.indexOf('/');
-//        int i4 = lot_26.indexOf('/');
-//        int i5 = lot_30.indexOf('/');
-//        int i6 = lot_32.indexOf('/');
-//
-//        big_springs = big_springs.substring(0,i1);
-//        lot_6 = lot_6.substring(0,i2);
-//        lot_24 = lot_24.substring(0,i3);
-//        lot_26 = lot_26.substring(0,i4);
-//        lot_30 = lot_30.substring(0,i5);
-//        lot_32 = lot_32.substring(0,i6);
-//
-//        editor.putString("BSP",big_springs );
-//        editor.putString("Lot 6", lot_6);
-//        editor.putString("Lot 24", lot_24);
-//        editor.putString("Lot 26", lot_26);
-//        editor.putString("Lot 30", lot_30);
-//        editor.putString("Lot 32", lot_32);
-//
-//        editor.apply();
+        String big_springs = big_springs_spaces.getText().toString();
+        String lot_6 = lot_6_spaces.getText().toString();
+        String lot_24 = lot_24_spaces.getText().toString();
+        String lot_26 = lot_26_spaces.getText().toString();
+        String lot_30 = lot_30_spaces.getText().toString();
+        String lot_32 = lot_32_spaces.getText().toString();
+
+        int i1 = big_springs.indexOf('/');
+        int i2 = lot_6.indexOf('/');
+        int i3 = lot_24.indexOf('/');
+        int i4 = lot_26.indexOf('/');
+        int i5 = lot_30.indexOf('/');
+        int i6 = lot_32.indexOf('/');
+
+        big_springs = big_springs.substring(0,i1);
+        lot_6 = lot_6.substring(0,i2);
+        lot_24 = lot_24.substring(0,i3);
+        lot_26 = lot_26.substring(0,i4);
+        lot_30 = lot_30.substring(0,i5);
+        lot_32 = lot_32.substring(0,i6);
+
+        editor.putString("BSP",big_springs );
+        editor.putString("Lot 6", lot_6);
+        editor.putString("Lot 24", lot_24);
+        editor.putString("Lot 26", lot_26);
+        editor.putString("Lot 30", lot_30);
+        editor.putString("Lot 32", lot_32);
+
+        editor.apply();
     }
 
 }
