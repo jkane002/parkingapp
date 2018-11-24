@@ -8,6 +8,6 @@ public class FireBase_ParkingApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Firebase.set
+        Firebase.setAndroidContext(this);
     }
 }

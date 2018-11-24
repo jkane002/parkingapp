@@ -1,16 +1,8 @@
 package com.example.andrewcruz.parking_app;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Debug;
-import android.renderscript.ScriptGroup;
-import android.util.Log;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.firebase.client.Firebase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +15,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class fetchData extends AsyncTask<Void, Void, Void> {
     String Big_Springs_Spaces = "";
@@ -33,14 +26,16 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     String Lot_30_Spaces = "";
     String Lot_32_Spaces = "";
 
-    String results = "";
-    String results2 = "";
-    String results3 = "";
-    String results4 = "";
-    String results5 = "";
-    String results6 = "";
+    private String results = "";
+    private String results2 = "";
+    private String results3 = "";
+    private String results4 = "";
+    private String results5 = "";
+    private String results6 = "";
 
     String time = "Last Updated: ";
+
+    private Firebase mRef = new Firebase("https://parking-app-222616.firebaseio.com/Parking");
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -146,13 +141,6 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss aa");
             time = time + dateFormat.format(currentTime);
 
-            Big_Springs_Spaces = Big_Springs_Spaces + "/551 spaces";
-            Lot_6_Spaces = Lot_6_Spaces + "/329 spaces";
-            Lot_24_Spaces = Lot_24_Spaces + "/384 spaces";
-            Lot_26_Spaces = Lot_26_Spaces + "/436 spaces";
-            Lot_30_Spaces = Lot_30_Spaces + "/2190 spaces";
-            Lot_32_Spaces = Lot_32_Spaces + "/258 spaces";
-
 
 
         } catch (MalformedParameterizedTypeException e) {
@@ -169,19 +157,18 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        MainActivity.big_springs_spaces.setText(this.Big_Springs_Spaces);
-        MainActivity.lot_6_spaces.setText(this.Lot_6_Spaces);
-        MainActivity.lot_24_spaces.setText(this.Lot_24_Spaces);
-        MainActivity.lot_26_spaces.setText(this.Lot_26_Spaces);
-        MainActivity.lot_30_spaces.setText(this.Lot_30_Spaces);
-        MainActivity.lot_32_spaces.setText(this.Lot_32_Spaces);
+        uploadFirebase();
+    }
 
-//        ParseActivity.big_springs_spaces.setPadding(0,0,0,0);
-//        ParseActivity.lot_6_spaces.setPadding(55,0,0,0);
-//        ParseActivity.lot_24_spaces.setPadding(55,0,0,0);
-//        ParseActivity.lot_26_spaces.setPadding(55,0,0,0);
-//        ParseActivity.lot_30_spaces.setPadding(55,0,0,0);
-//        ParseActivity.lot_32_spaces.setPadding(55,0,0,0);
-        MainActivity.time.setText(this.time);
+    private void uploadFirebase() {
+        Map<String, Object> map = new HashMap<>();
+        map.put( "Big Springs", Integer.parseInt(Big_Springs_Spaces));
+        map.put("Lot 24", Integer.parseInt(Lot_24_Spaces));
+        map.put("Lot 26", Integer.parseInt(Lot_26_Spaces));
+        map.put("Lot 30", Integer.parseInt(Lot_30_Spaces));
+        map.put("Lot 32", Integer.parseInt(Lot_32_Spaces));
+        map.put("Lot 6", Integer.parseInt(Lot_6_Spaces));
+
+        mRef.updateChildren(map);
     }
 }
