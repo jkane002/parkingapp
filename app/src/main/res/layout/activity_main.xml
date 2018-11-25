@@ -1,269 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <!--Contains Whole Page View-->
     <RelativeLayout
+        android:id="@+id/relLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relLayout">
+        android:weightSum="10">
         <!--Main View Container-->
         <RelativeLayout
+            android:id="@+id/relLayoutMainView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/relLayoutMainView"
-            android:layout_above="@+id/relLayoutNavBar">
+            android:layout_above="@+id/relLayoutNavBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="0dp">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:text="@string/update"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp"
-                android:layout_alignParentRight="true" />
 
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/button"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="-39dp"
-                android:padding="5dp"
-                android:text="@string/Time"
-                android:textSize="12sp"
-                android:layout_alignParentLeft="true" />
-
-            <TableLayout
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="51dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dp">
+                android:layout_height="0dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="5dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:padding="14dp"
+                android:rowCount="3">
+<!--push you bitch-->
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp">
+                <!--Row 1-->
+                <!--col 1-->
 
-                    <TextView
-                        android:id="@+id/Big_Springs_Structure"
-                        android:layout_width="171dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/big_springs_location"
-                        android:textSize="16sp" />
+            </GridLayout>
 
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="16dp"
-                        android:layout_height="29dp" />
-
-                    <TextView
-                        android:id="@+id/Big_Springs_Spaces"
-                        android:layout_width="138dp"
-                        android:layout_height="fill_parent"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:text="@string/tap"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="363dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/Lot_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/Lot_6"
-                        android:textSize="24sp" />
+                        android:text="help">
 
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    </TextView>
 
-                    <TextView
-                        android:id="@+id/Lot_6_Spaces"
-                        android:layout_width="57dp"
-                        android:layout_height="fill_parent"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:text="@string/tap"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF"/>
+                </LinearLayout>
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="20dp">
-
-                    <TextView
-                        android:id="@+id/Lot_24"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/Lot_24"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/Lot_24_Spaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="@string/tap"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="20dp">
-
-                    <TextView
-                        android:id="@+id/Lot_26"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/Lot_26"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/Lot_26_Spaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="@string/tap"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="20dp">
-
-                    <TextView
-                        android:id="@+id/Lot_30"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/Lot_30"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/Lot_30_Spaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="@string/tap"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="20dp">
-
-                    <TextView
-                        android:id="@+id/Lot_32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/table_border"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="24dp"
-                        android:text="@string/Lot_32"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/Lot_32_Spaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="@string/tap"
-                        android:background="@drawable/space_border"
-                        android:gravity="bottom|center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
-                </TableRow>
-
-            </TableLayout>
-
+            </android.support.v7.widget.CardView>
         </RelativeLayout>
 
         <!--Bottom Nav Bar Container-->
         <RelativeLayout
+            android:id="@+id/relLayoutNavBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/relLayoutNavBar"
             android:layout_alignParentBottom="true">
 
             <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottomNavView_Bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/bottomNavView_Bar"
                 android:background="@drawable/white_grey_border_bottom"
                 app:menu="@menu/bottom_navigation_menu">
 
