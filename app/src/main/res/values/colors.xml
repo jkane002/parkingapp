@@ -15,4 +15,14 @@
     <color name="colorSecondaryTextDefaultMaterialDark">#B3FFFFFF</color>
 
 
+    <color name="material_deep_purple">#673AB7</color>
+    <color name="material_pink">#E91E63</color>
+    <color name="material_green">#4CAF50</color>
+    <color name="material_blue">#2196F3</color>
+    <color name="background_color">#fcfcfc</color>
+
+    <!--<color name="colorToolBar">#3F51B5</color>-->
+    <!--<color name="colorGrey">#c3c3c3</color>-->
+    <!--<color name="colorWhite">#FFFFFF</color>-->
+
 </resources>

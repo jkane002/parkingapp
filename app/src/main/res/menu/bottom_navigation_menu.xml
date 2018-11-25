@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ic_parking"
+        android:icon="@drawable/ic_parking_spaces"
+        android:title="@string/parking_spaces"/>
+
+    <item
+        android:id="@+id/ic_map"
+        android:icon="@drawable/ic_map"
+        android:title="@string/map_view"/>
+
+    <item
+        android:id="@+id/ic_schedule"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/class_schedule"/>
+
+    <item
+        android:id="@+id/ic_info"
+        android:icon="@drawable/ic_info"
+        android:title="@string/taps_info"/>
+</menu>

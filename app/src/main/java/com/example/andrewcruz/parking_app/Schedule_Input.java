@@ -7,11 +7,15 @@ import android.os.Bundle;
 
 
 import android.os.Debug;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -46,6 +50,8 @@ public class Schedule_Input extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+
+
 //        Load preexisting user schedule
         load();
 //        Get Add Building Button from view
@@ -64,6 +70,8 @@ public class Schedule_Input extends AppCompatActivity {
                 startActivityForResult(i,1);
             }
         });
+
+        init_bar();
     }
 
     /*  Function that handles return from activity after selecting a building location
@@ -160,9 +168,11 @@ public class Schedule_Input extends AppCompatActivity {
         ArrayList<String> keys = new ArrayList<>();
         Map<String, ?> allEntries = mySp.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            String comp = entry.getKey().substring(0, entry.getKey().indexOf('_'));
-            if(!exist(keys,comp) && !comp.equals("List")) {
-                keys.add(comp);
+            if(!check(entry.getKey())) {
+                String comp = entry.getKey().substring(0, entry.getKey().indexOf('_'));
+                if (!exist(keys, comp) && !comp.equals("List")) {
+                    keys.add(comp);
+                }
             }
         }
 //        Create the building objects to load into ArrayList<Building>
@@ -197,5 +207,52 @@ public class Schedule_Input extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+    private boolean check(String s) {
+        String[] g = {"BSP", "Lot 6","Lot 24", "Lot 26","Lot 30", "Lot 32"};
+
+        for(int i = 0; i < g.length; i++) {
+            if(s.equals(g[i]))
+                return true;
+        }
+
+        return false;
+    }
+
+    private void init_bar() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ic_parking:
+                        Intent i0 = new Intent(Schedule_Input.this, MainActivity.class);
+                        startActivity(i0);
+                        break;
+
+                    case R.id.ic_map:
+                        Intent i1 = new Intent(Schedule_Input.this, MapActivity.class);
+                        startActivity(i1);
+                        break;
+
+                    case R.id.ic_schedule:
+                        break;
+
+                    case R.id.ic_info:
+                        Intent i3 = new Intent(Schedule_Input.this, Taps_View.class);
+                        startActivity(i3);
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 }
