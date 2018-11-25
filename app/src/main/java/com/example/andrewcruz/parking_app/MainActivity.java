@@ -44,6 +44,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
+
+//        private void init() {
+//            listView = (ListView)findViewById(R.id.listView);
+//
+//            final String[] values = new String[]{"Parking List", "Schedule Input", "TAPS Information", "Map"};
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                    R.layout.activity_list__main,android.R.id.text1, values);
+//
+//            listView.setAdapter(adapter);
+//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    if (position == 0) {
+//                        Intent myintent  = new Intent(view.getContext(), Parking_View.class );
+//                        startActivityForResult(myintent,0);
+//
+//                    }
+//                    if (position == 1) {
+//                        Intent myintent  = new Intent(view.getContext(), Schedule_Input.class );
+//                        startActivityForResult(myintent,1);
+//
+//                    }
+//                    if (position == 2) {
+//                        Intent myintent  = new Intent(view.getContext(), Taps_View.class );
+//                        startActivityForResult(myintent,2);
+//                    }
+//                    if (position == 3) {
+//                        Intent myIntent = new Intent(view.getContext(), MapActivity.class);
+//                        startActivity(myIntent);
+//                    }
+//                }
+//            });
+
+=======
+>>>>>>> be36f35b1bd34564fadffba45dd713cad2e5cb26
         if(isServicesOK()) {
             init_bar();
             init_parking();
