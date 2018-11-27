@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -70,6 +71,18 @@ public class UserFinder extends AppCompatActivity implements OnMapReadyCallback 
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
+        ImageButton helpbtn = (ImageButton)findViewById(R.id.Help);
+        helpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(UserFinder.this).setIcon(android.R.drawable.ic_menu_help)
+                        .setTitle("Help")
+                        .setMessage("1. Press the \" Find me \" button to save your location. \n" +
+                                "2. Your location will now be saved unless you leave this activity. \n" +
+                                "3. You can safely leave this app and your location will be saved unless you quit the app.")
+                        .setPositiveButton("ok", null).show();
+            }
+        });
 
 
         Button btn = (Button)findViewById(R.id.Finder);

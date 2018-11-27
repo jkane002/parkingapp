@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,25 +24,17 @@
         android:layout_alignParentTop="true"
         android:text="Find me!" />
 
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:elevation="10dp"-->
-        <!--android:background="#ffff"-->
-        <!--android:id="@+id/relLayout1">-->
+    <ImageButton
+        android:id="@+id/Help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Finder"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        app:srcCompat="@android:drawable/ic_menu_help" />
 
-        <!--<ImageView-->
-            <!--android:layout_width="15dp"-->
-            <!--android:layout_height="15dp"-->
-            <!--android:id="@+id/ic_magnify"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:src="@drawable/ic_magnify"-->
-            <!--/>-->
-    <!--</RelativeLayout>-->
 
 
 </RelativeLayout>
