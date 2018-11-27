@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
             init_bar();
             init_parking();
             load_firebase();
-            parse();
     }
 
     public void load_firebase() {
@@ -169,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
         time = (TextView)findViewById(R.id.time);
 
         Button click = (Button)findViewById(R.id.button);
-        fetchData process = new fetchData();
-        process.execute();
 
         click.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,13 +177,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void parse() {
-        fetchData process = new fetchData();
-        process.execute();
-    }
-
-
 }
 
 

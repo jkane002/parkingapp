@@ -35,7 +35,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
 
     String time = "Last Updated: ";
 
-    private Firebase mRef = new Firebase("https://parking-app-222616.firebaseio.com/Parking");
+    private Firebase mRef = new Firebase("https://parking-app-222616.firebaseio.com");
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -169,6 +169,13 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         map.put("Lot 32", Integer.parseInt(Lot_32_Spaces));
         map.put("Lot 6", Integer.parseInt(Lot_6_Spaces));
 
-        mRef.updateChildren(map);
+        Map<String, Object> m = new HashMap<>();
+        Date currentTime = Calendar.getInstance().getTime();
+        String time = currentTime.toString();
+        m.put("Parse", time);
+
+        mRef.child("Parking").updateChildren(map);
+        mRef.child("Triggers").updateChildren(m);
+
     }
 }
