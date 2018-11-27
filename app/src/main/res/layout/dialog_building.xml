@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/selected_days"
-            android:textSize="25sp" />
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -30,6 +31,8 @@
                     android:id="@+id/mon_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/monday" />
             </TableRow>
 
@@ -41,6 +44,8 @@
                     android:id="@+id/tues_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/tuesday" />
             </TableRow>
 
@@ -52,6 +57,8 @@
                     android:id="@+id/wed_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/wednesday" />
             </TableRow>
 
@@ -63,6 +70,8 @@
                     android:id="@+id/thur_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/thursday" />
             </TableRow>
 
@@ -74,6 +83,8 @@
                     android:id="@+id/fri_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/friday" />
             </TableRow>
 
@@ -85,6 +96,8 @@
                     android:id="@+id/sat_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
                     android:text="@string/saturday" />
             </TableRow>
 
@@ -96,6 +109,9 @@
                     android:id="@+id/sun_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+
                     android:text="@string/sunday" />
             </TableRow>
         </TableLayout>
@@ -104,6 +120,7 @@
             android:id="@+id/set_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:text="@string/time" />
 
         <LinearLayout
@@ -116,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="30sp"
                 android:text="@string/cancel" />
 
             <Button
@@ -123,6 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="30sp"
                 android:text="@string/add" />
         </LinearLayout>
 

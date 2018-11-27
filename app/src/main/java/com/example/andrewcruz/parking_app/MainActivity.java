@@ -17,14 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 String time = currentTime.toString();
                 setText(value, key, time);
             }
-
+ 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 //Will Dp Nothing Since Set Number of Parking Lots
