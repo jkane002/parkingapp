@@ -140,6 +140,25 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss aa");
             time = time + dateFormat.format(currentTime);
 
+            if(Big_Springs_Spaces.isEmpty()) {
+                Big_Springs_Spaces = "0";
+            }
+            if(Lot_6_Spaces.isEmpty()) {
+                Big_Springs_Spaces = "0";
+            }
+            if(Lot_24_Spaces.isEmpty()) {
+                Lot_24_Spaces = "0";
+            }
+            if(Lot_26_Spaces.isEmpty()) {
+                Lot_26_Spaces = "0";
+            }
+            if(Lot_30_Spaces.isEmpty()) {
+                Lot_30_Spaces = "0";
+            }
+            if(Lot_32_Spaces.isEmpty()) {
+                Lot_32_Spaces = "0";
+            }
+
             Big_Springs_Spaces = Big_Springs_Spaces + "/551 spaces";
             Lot_6_Spaces = Lot_6_Spaces + "/329 spaces";
             Lot_24_Spaces = Lot_24_Spaces + "/384 spaces";
