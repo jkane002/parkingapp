@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 String time = currentTime.toString();
                 setText(value, key, time);
             }
- 
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 //Will Dp Nothing Since Set Number of Parking Lots
