@@ -24,6 +24,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -367,6 +368,42 @@ public class MainActivity extends AppCompatActivity {
         scheduler.cancel(123);
         Log.d(TAG, "Job cancelled");
     }
+
+//    void setGraph(CardView card) {
+//        mRef.child("Data").addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                for(DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
+//                    //Loop 1 to go through all the child nodes of users
+//                    for(DataSnapshot booksSnapshot : uniqueKey.child("Books").getChildren()){
+//                        //loop 2 to go through all the child nodes of books node
+//                        String bookskey = booksSnapshot.getKey();
+//                        String booksValue = booksSnapshot.getValue();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        })
+//    }
 }
 
 
