@@ -210,7 +210,7 @@ public class Schedule_Input extends AppCompatActivity {
     }
 
     private boolean check(String s) {
-        String[] g = {"graphbsp", "Lot graph6","Lot graph24", "Lot graph26","Lot graph30", "Lot graph32"};
+        String[] g = {"BSP", "Lot 6","Lot 24", "Lot 26","Lot 30", "Lot 32"};
 
         for(int i = 0; i < g.length; i++) {
             if(s.equals(g[i]))

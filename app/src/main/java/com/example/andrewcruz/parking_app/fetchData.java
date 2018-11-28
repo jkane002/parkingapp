@@ -163,11 +163,11 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     private void uploadFirebase() {
         Map<String, Object> map = new HashMap<>();
         map.put( "Big Springs", Integer.parseInt(Big_Springs_Spaces));
-        map.put("Lot graph24", Integer.parseInt(Lot_24_Spaces));
-        map.put("Lot graph26", Integer.parseInt(Lot_26_Spaces));
-        map.put("Lot graph30", Integer.parseInt(Lot_30_Spaces));
-        map.put("Lot graph32", Integer.parseInt(Lot_32_Spaces));
-        map.put("Lot graph6", Integer.parseInt(Lot_6_Spaces));
+        map.put("Lot 24", Integer.parseInt(Lot_24_Spaces));
+        map.put("Lot 26", Integer.parseInt(Lot_26_Spaces));
+        map.put("Lot 30", Integer.parseInt(Lot_30_Spaces));
+        map.put("Lot 32", Integer.parseInt(Lot_32_Spaces));
+        map.put("Lot 6", Integer.parseInt(Lot_6_Spaces));
 
         Map<String, Object> m = new HashMap<>();
         Date currentTime = Calendar.getInstance().getTime();

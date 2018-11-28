@@ -105,23 +105,23 @@ public class MainActivity extends AppCompatActivity {
                 text = Integer.toString(v) + "/551 spaces";
                 big_springs_spaces.setText(text);
                 break;
-            case "Lot graph24":
+            case "Lot 24":
                 text = Integer.toString(v) + "/384 spaces";
                 lot_24_spaces.setText(text);
                 break;
-            case "Lot graph26":
+            case "Lot 26":
                 text = Integer.toString(v) + "/436 spaces";
                 lot_26_spaces.setText(text);
                 break;
-            case "Lot graph30":
+            case "Lot 30":
                 text = Integer.toString(v) + "/2190 spaces";
                 lot_30_spaces.setText(text);
                 break;
-            case "Lot graph32":
+            case "Lot 32":
                 text = Integer.toString(v) + "/258 spaces";
                 lot_32_spaces.setText(text);
                 break;
-            case "Lot graph6":
+            case "Lot 6":
                 text = Integer.toString(v) + "/329 spaces";
                 lot_6_spaces.setText(text);
                 break;
