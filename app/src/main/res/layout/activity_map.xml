@@ -40,27 +40,30 @@
                 android:background="@drawable/white_border"
                 android:id = "@+id/relLayout1">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:id="@+id/ic_magnify"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_magnify"
-                    android:layout_marginStart="10dp" />
-
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/ic_magnify"
                     android:layout_centerVertical="true"
                     android:textColor="#000"
-                    android:id="@+id/parking_lots"
-                    android:layout_toEndOf="@+id/ic_magnify" />
+                    android:id="@+id/parking_lots" />
 
             </RelativeLayout>
 
             <!--Button For Return to current Location-->
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/relLayout1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/ic_saveParking"
+                android:src="@drawable/ic_save_parking"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentLeft="true" />
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -69,7 +72,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
-                android:id="@+id/ic_parking"
+                android:id="@+id/ic_parkingToggle"
                 android:src="@drawable/ic_parking_icon"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp" />
@@ -77,12 +80,12 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_below="@id/ic_parking"
+                android:layout_below="@id/ic_parkingToggle"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
-                android:id="@+id/ic_building"
+                android:id="@+id/ic_buildingToggle"
                 android:src="@drawable/ic_building_icon"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp" />

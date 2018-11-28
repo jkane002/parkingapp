@@ -16,7 +16,6 @@ import java.util.Timer;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Service extends JobService {
     private static final String TAG = "Parsing";
-    boolean jobCancelled = false;
     fetchData process;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -31,8 +30,6 @@ public class Service extends JobService {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if(jobCancelled)
-                    return;
                 Log.d(TAG,"Runnig Parse");
                 process = new fetchData();
                 process.execute();
@@ -46,7 +43,6 @@ public class Service extends JobService {
     public boolean onStopJob(JobParameters jobParameters) {
         Log.d(TAG, "JOB CANCELLED BEFORE CONPLETION");
         process.cancel(true);
-        jobCancelled = true;
         return true;
     }
 }

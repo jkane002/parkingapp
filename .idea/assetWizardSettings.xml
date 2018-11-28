@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_local_parking_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_car_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -56,10 +56,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="TEXT" />
-                                      <entry key="outputName" value="ic_building_icon" />
+                                      <entry key="outputName" value="ic_parking_saved_icon" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="f1ab00" />
+                                      <entry key="themeColor" value="f11a00" />
                                     </map>
                                   </option>
                                 </PersistentState>

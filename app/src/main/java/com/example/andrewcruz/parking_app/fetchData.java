@@ -1,5 +1,6 @@
 package com.example.andrewcruz.parking_app;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.firebase.client.Firebase;
@@ -141,7 +142,24 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss aa");
             time = time + dateFormat.format(currentTime);
 
-
+            if(Big_Springs_Spaces.isEmpty()) {
+                Big_Springs_Spaces = "0";
+            }
+            if(Lot_6_Spaces.isEmpty()) {
+                Big_Springs_Spaces = "0";
+            }
+            if(Lot_24_Spaces.isEmpty()) {
+                Lot_24_Spaces = "0";
+            }
+            if(Lot_26_Spaces.isEmpty()) {
+                Lot_26_Spaces = "0";
+            }
+            if(Lot_30_Spaces.isEmpty()) {
+                Lot_30_Spaces = "0";
+            }
+            if(Lot_32_Spaces.isEmpty()) {
+                Lot_32_Spaces = "0";
+            }
 
         } catch (MalformedParameterizedTypeException e) {
             e.printStackTrace();
@@ -177,5 +195,11 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         mRef.child("Parking").updateChildren(map);
         mRef.child("Triggers").updateChildren(m);
 
+        mRef.child("Data").child("Big Springs").child(time).push().setValue(Big_Springs_Spaces);
+        mRef.child("Data").child("Lot 24").child(time).push().setValue(Lot_24_Spaces);
+        mRef.child("Data").child("Lot 26").child(time).push().setValue(Lot_26_Spaces);
+        mRef.child("Data").child("Lot 30").child(time).push().setValue(Lot_30_Spaces);
+        mRef.child("Data").child("Lot 32").child(time).push().setValue(Lot_32_Spaces);
+        mRef.child("Data").child("Lot 6").child(time).push().setValue(Lot_6_Spaces);
     }
 }
