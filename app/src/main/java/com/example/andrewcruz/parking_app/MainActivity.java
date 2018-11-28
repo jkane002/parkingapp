@@ -1,6 +1,5 @@
 package com.example.andrewcruz.parking_app;
 
-import android.app.Dialog;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
@@ -18,13 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView lot_30_spaces;
     public TextView lot_32_spaces;
     public TextView time;
-    GraphView graph;
+    ImageView graph;
 
     private static final String TAG = "Main Screen";
 
@@ -106,23 +105,23 @@ public class MainActivity extends AppCompatActivity {
                 text = Integer.toString(v) + "/551 spaces";
                 big_springs_spaces.setText(text);
                 break;
-            case "Lot 24":
+            case "Lot graph24":
                 text = Integer.toString(v) + "/384 spaces";
                 lot_24_spaces.setText(text);
                 break;
-            case "Lot 26":
+            case "Lot graph26":
                 text = Integer.toString(v) + "/436 spaces";
                 lot_26_spaces.setText(text);
                 break;
-            case "Lot 30":
+            case "Lot graph30":
                 text = Integer.toString(v) + "/2190 spaces";
                 lot_30_spaces.setText(text);
                 break;
-            case "Lot 32":
+            case "Lot graph32":
                 text = Integer.toString(v) + "/258 spaces";
                 lot_32_spaces.setText(text);
                 break;
-            case "Lot 6":
+            case "Lot graph6":
                 text = Integer.toString(v) + "/329 spaces";
                 lot_6_spaces.setText(text);
                 break;
@@ -216,8 +215,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graphbsp);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -239,8 +238,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph6);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -262,8 +261,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph24);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -285,8 +284,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph26);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -308,8 +307,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph30);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -331,8 +330,8 @@ public class MainActivity extends AppCompatActivity {
                         new DataPoint(2, 3)
                 });
 
-                graph = (GraphView) mView.findViewById(R.id.graph);
-                graph.addSeries(series);
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph32);
                 builder.setView(mView);
                 builder.create().show();
             }

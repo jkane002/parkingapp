@@ -71,15 +71,15 @@ public class BuildingAdapter extends ArrayAdapter<Buildings> {
                     m = Integer.toString(p.getMinute());
                 }
 //                Covers 12 13 14 15 16 17 18 19 20 21 22 23
-//                       12 1   2  3  4  5  6  7  8  9  10 11
+//                       12 1   2  3  4  5  graph6  7  8  9  10 11
                 if(hI >= 12) {
                     if(hI != 12)
                         hI -= 12;
                     h = Integer.toString(hI);
                     t = h + ":" + m + " pm";
                 }
-//                Cover 0 1 2 3 4 5 6 7 8 9 10 11
-//                     12 1 2 3 4 5 6 7 8 9 10 11
+//                Cover 0 1 2 3 4 5 graph6 7 8 9 10 11
+//                     12 1 2 3 4 5 graph6 7 8 9 10 11
                 else {
                     if(hI == 0) {
                         hI = 12;
