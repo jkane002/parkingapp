@@ -84,7 +84,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     String buildingName[] = { "Bourns Hall", "Boyce Hall", "CHASS INT NORTH", "CHASS INT SOUTH",
             "CHUNG HALL", "HUMANITIES/SOCIAL SCIENCE", "LIFE SCIENCES", "MATERIAL SCIENCE AND ENGINEERING",
             "OLMSTED HALL", "PHYSICS", "SPROUL HALL", "SKYE", "SURGE FACILITY" , "SPIETH HALL", "THEATER", "UNLH", "WATKINS"};
-    String parking[] = {"Big Springs", "Lot graph24", "Lot graph26", "Lot graph30", "Lot graph32", "Lot graph6"};
+    String parking[] = {"Big Springs", "Lot 24", "Lot 26", "Lot 30", "Lot 32", "Lot 6"};
 
 
     static final String TAG = "***********";
@@ -580,19 +580,19 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
             case "Big Springs":
                 l = new LatLng(lat[0],log[0]);
                 break;
-            case "Lot graph6":
+            case "Lot 6":
                 l = new LatLng(lat[1],log[1]);
                 break;
-            case "Lot graph26":
+            case "Lot 26":
                 l = new LatLng(lat[2],log[2]);
                 break;
-            case "Lot graph30":
+            case "Lot 30":
                 l = new LatLng(lat[3],log[3]);
                 break;
-            case "Lot graph32":
+            case "Lot 32":
                 l = new LatLng(lat[4],log[4]);
                 break;
-            case "Lot graph24":
+            case "Lot 24":
                 l = new LatLng(lat[5],log[5]);
                 break;
             default:
