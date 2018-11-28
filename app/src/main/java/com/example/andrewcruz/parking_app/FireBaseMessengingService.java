@@ -140,7 +140,7 @@ public class FireBaseMessengingService extends com.google.firebase.messaging.Fir
 
             builder.setContentTitle(aTitle)    // required
                     .setContentText(aMessage)  // required
-                    .setSmallIcon(android.R.drawable.ic_popup_reminder) // required
+                    .setSmallIcon(R.drawable.chung) // required
                     .setDefaults(Notification.DEFAULT_ALL)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
@@ -150,6 +150,7 @@ public class FireBaseMessengingService extends com.google.firebase.messaging.Fir
         }
 
         Notification notification = builder.build();
+        Log.d(TAG, "SENDING NOTIFICATION");
         notifManager.notify(NOTIFY_ID, notification);
     }
 }

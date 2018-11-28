@@ -47,7 +47,8 @@
                         android:layout_marginLeft="90dp"
                         android:text="@string/Time"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="RtlHardcoded" />
 
                 </RelativeLayout>
 

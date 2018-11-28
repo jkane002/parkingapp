@@ -196,7 +196,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                     addMarkerType("Parking");
                     parkingClicked = true;
                 } else {
-//                    mMap.clear();
+                    mMap.clear();
                     parkingClicked = false;
                 }
                 if(placeParkingLocation()) {
@@ -217,7 +217,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                     addMarkerType("Building");
                     buildingClicked = true;
                 } else {
-//                    mMap.clear();
+                    mMap.clear();
                     buildingClicked = false;
                 }
                 if(placeParkingLocation()) {
@@ -444,11 +444,11 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
 //            Calls Creator for either Parking or Buildings
             switch (type){
                 case "Parking":
-//                    mMap.clear();
+                    mMap.clear();
                     parkingMarker();
                     break;
                 case "Building":
-//                    mMap.clear();
+                    mMap.clear();
                     buildingMarker();
                     break;
                 case "User":
@@ -738,7 +738,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
      */
     private void MoveCamera(LatLng latLng, float zoom) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-//        mMap.clear();
+        mMap.clear();
     }
 
     private void MoveCameraUser(LatLng latLng, float zoom) {
