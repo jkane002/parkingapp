@@ -18,7 +18,7 @@
         android:name=".FireBase_ParkingApp">
         <activity
             android:name=".splash_screen"
-            android:theme="@style/splash_screen">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
