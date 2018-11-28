@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -44,9 +46,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.maps.android.SphericalUtil;
 import com.google.maps.android.clustering.ClusterManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -551,7 +555,18 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     private void userMarker() {
         int icon = R.drawable.ic_parking_saved_icon;
         LatLng userLocation = user;
-        String snippet = "";
+        String snippet = "You parked at: ";
+        Geocoder g = new Geocoder(MapActivity.this);
+
+        try {
+            List<Address> list = g.getFromLocation(userLocation.latitude, userLocation.longitude, 1);
+            Address address = list.get(0);
+            snippet += address.getAddressLine(0) + ", " + address.getLocality();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+
         ClusterMarker userParkingLocationMarker = new ClusterMarker(
                 userLocation,
                 "Saved Location",
