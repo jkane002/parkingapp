@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -173,15 +175,124 @@ public class MainActivity extends AppCompatActivity {
         lot_32_spaces = (TextView)findViewById(R.id.Lot_32_Spaces);
         time = (TextView)findViewById(R.id.time);
 
-        Button click = (Button)findViewById(R.id.button);
+        CardView card_BSP, card_6, card_24, card_26, card_30, card_32;
 
-        click.setOnClickListener(new View.OnClickListener() {
+        card_BSP = (CardView)findViewById(R.id.card_BSP);
+        card_6 = (CardView)findViewById(R.id.card_6);
+        card_24 = (CardView)findViewById(R.id.card_24);
+        card_26 = (CardView)findViewById(R.id.card_26);
+        card_30 = (CardView)findViewById(R.id.card_30);
+        card_32 = (CardView)findViewById(R.id.card_32);
+
+
+        Button bUpdate = (Button)findViewById(R.id.button);
+
+        bUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fetchData process = new fetchData();
                 process.execute();
             }
         });
+
+        card_BSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_32.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
