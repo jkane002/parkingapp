@@ -84,7 +84,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     String buildingName[] = { "Bourns Hall", "Boyce Hall", "CHASS INT NORTH", "CHASS INT SOUTH",
             "CHUNG HALL", "HUMANITIES/SOCIAL SCIENCE", "LIFE SCIENCES", "MATERIAL SCIENCE AND ENGINEERING",
             "OLMSTED HALL", "PHYSICS", "SPROUL HALL", "SKYE", "SURGE FACILITY" , "SPIETH HALL", "THEATER", "UNLH", "WATKINS"};
-    String parking[] = {"Big Springs", "Lot 24", "Lot 26", "Lot 30", "Lot 32", "Lot 6"};
+    String parking[] = {"Big Springs", "Lot graph24", "Lot graph26", "Lot graph30", "Lot graph32", "Lot graph6"};
 
 
     static final String TAG = "***********";
@@ -572,7 +572,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
             Returns the LatLng object of parking lot
      */
     private LatLng getLatLng(String k) {
-        //    Big Springs, Lot 24, Lot 26, Lot 30, Lot 32, Lot 6
+        //    Big Springs, Lot graph24, Lot graph26, Lot graph30, Lot graph32, Lot graph6
         double lat[] = {33.9756387,33.969771,33.9816032,33.9695745,33.969195,33.9780886};
         double log[] = {-117.32097140000002,-117.32745449999999,-117.33491379999998,-117.33264969999999,-117.330363,-117.33056679999999};
         LatLng l;
@@ -580,19 +580,19 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
             case "Big Springs":
                 l = new LatLng(lat[0],log[0]);
                 break;
-            case "Lot 6":
+            case "Lot graph6":
                 l = new LatLng(lat[1],log[1]);
                 break;
-            case "Lot 26":
+            case "Lot graph26":
                 l = new LatLng(lat[2],log[2]);
                 break;
-            case "Lot 30":
+            case "Lot graph30":
                 l = new LatLng(lat[3],log[3]);
                 break;
-            case "Lot 32":
+            case "Lot graph32":
                 l = new LatLng(lat[4],log[4]);
                 break;
-            case "Lot 24":
+            case "Lot graph24":
                 l = new LatLng(lat[5],log[5]);
                 break;
             default:

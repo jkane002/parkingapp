@@ -1,44 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".User_Class_Location_List">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        tools:layout_editor_absoluteX="16dp">
 
-        <TextView
-            android:id="@+id/building_name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="12pt"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/building_days"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/building_name"/>
+            <TextView
+                android:id="@+id/building_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Building"
+                android:textColor="@android:color/black"
+                android:textSize="12pt"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/building_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/building_days"
-            android:layout_marginTop="2pt"/>
+            <TextView
+                android:id="@+id/building_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/building_name"
+                android:gravity="center"
+                android:text="Days"
+                android:textColor="@android:color/black"
+                android:textSize="8pt" />
 
-        <Button
-            android:id="@+id/remove_building"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/remove"
-            android:layout_below="@id/building_time"
-            android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/building_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/building_days"
+                android:layout_marginTop="2pt"
+                android:gravity="center"
+                android:text="Times"
+                android:textColor="@android:color/black"
+                android:textSize="8pt" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/remove_building"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/building_time"
+                android:layout_centerInParent="true"
+                android:text="@string/remove"
+                android:textSize="8pt"
+            android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+
+
+

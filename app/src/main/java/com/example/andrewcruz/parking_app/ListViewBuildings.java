@@ -61,7 +61,6 @@ public class ListViewBuildings extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final int p = position;
 
-
                 final AlertDialog.Builder builder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     builder = new AlertDialog.Builder(ListViewBuildings.this, android.R.style.Theme_Material_Dialog_Alert);
@@ -88,6 +87,7 @@ public class ListViewBuildings extends AppCompatActivity {
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                     }
                 });
 

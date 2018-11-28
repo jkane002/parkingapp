@@ -1,6 +1,5 @@
 package com.example.andrewcruz.parking_app;
 
-import android.app.Dialog;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
@@ -10,12 +9,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
@@ -36,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
     public TextView lot_32_spaces;
     public TextView time;
 
+    CardView card_BSP, card_6, card_24, card_26, card_30, card_32;
+
+
+    ImageView graph;
+
     private static final String TAG = "Main Screen";
 
     Firebase mRef = new Firebase("https://parking-app-222616.firebaseio.com/");
@@ -49,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             init_bar();
             init_parking();
             load_firebase();
-//            scheduleJob();
     }
 
     public void load_firebase() {
@@ -173,9 +179,19 @@ public class MainActivity extends AppCompatActivity {
         lot_32_spaces = (TextView)findViewById(R.id.Lot_32_Spaces);
         time = (TextView)findViewById(R.id.time);
 
-        Button click = (Button)findViewById(R.id.button);
+//        CardView card_BSP, card_6, card_24, card_26, card_30, card_32;
 
-        click.setOnClickListener(new View.OnClickListener() {
+        card_BSP = (CardView)findViewById(R.id.card_BSP);
+        card_6 = (CardView)findViewById(R.id.card_6);
+        card_24 = (CardView)findViewById(R.id.card_24);
+        card_26 = (CardView)findViewById(R.id.card_26);
+        card_30 = (CardView)findViewById(R.id.card_30);
+        card_32 = (CardView)findViewById(R.id.card_32);
+
+
+        Button bUpdate = (Button)findViewById(R.id.button);
+
+        bUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fetchData process = new fetchData();
@@ -183,6 +199,147 @@ public class MainActivity extends AppCompatActivity {
                 scheduleJob();
             }
         });
+
+        card_BSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graphbsp);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph6);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph24);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph26);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph30);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+        card_32.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(MainActivity.this);
+                }
+                View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+//                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+//                        new DataPoint(0, 1),
+//                        new DataPoint(1, 5),
+//                        new DataPoint(2, 3)
+//                });
+
+                graph = (ImageView) mView.findViewById(R.id.imageGraph);
+                graph.setImageResource(R.drawable.graph32);
+                builder.setView(mView);
+                builder.create().show();
+            }
+        });
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
