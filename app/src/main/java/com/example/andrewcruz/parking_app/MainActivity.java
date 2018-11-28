@@ -24,6 +24,9 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView lot_30_spaces;
     public TextView lot_32_spaces;
     public TextView time;
+    GraphView graph;
 
     private static final String TAG = "Main Screen";
 
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             init_bar();
             init_parking();
             load_firebase();
-            scheduleJob();
+//            scheduleJob();
     }
 
     public void load_firebase() {
@@ -206,7 +210,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -222,7 +233,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -238,7 +256,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -254,7 +279,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -270,7 +302,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }
@@ -286,7 +325,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 View mView = getLayoutInflater().inflate(R.layout.parking_trends,null);
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(0, 1),
+                        new DataPoint(1, 5),
+                        new DataPoint(2, 3)
+                });
 
+                graph = (GraphView) mView.findViewById(R.id.graph);
+                graph.addSeries(series);
                 builder.setView(mView);
                 builder.create().show();
             }

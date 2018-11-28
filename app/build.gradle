@@ -44,6 +44,7 @@ dependencies {
 
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.android.support:gridlayout-v7:27.1.1'
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
