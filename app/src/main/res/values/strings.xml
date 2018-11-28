@@ -37,6 +37,7 @@
         <item>Lot 32</item>
     </string-array>
     <string-array name="building_names">
+        <item>Arts Building</item>
         <item>Bourns Hall</item>
         <item>Boyce Hall</item>
         <item>CHASS INT NORTH</item>

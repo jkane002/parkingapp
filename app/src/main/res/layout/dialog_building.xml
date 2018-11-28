@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/selected_days"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="30sp" />
 
         <TableLayout

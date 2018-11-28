@@ -13,6 +13,7 @@
         android:id="@+id/simpleListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="100dp"/>
+        android:minHeight="100dp"
+        android:textColor="@android:color/black"/>
 
 </android.support.constraint.ConstraintLayout>
