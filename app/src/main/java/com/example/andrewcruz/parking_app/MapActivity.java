@@ -1,7 +1,9 @@
 package com.example.andrewcruz.parking_app;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -67,7 +69,17 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     boolean buildingClicked = false;
     boolean saveParking = false;
 
-    LatLng user = new LatLng(33.976594, -117.328155);
+
+
+    LatLng UCR = new LatLng(33.976594, -117.328155);
+    LatLng TEMP = new LatLng(33.9746,-117.325);
+// CLASS
+// LatLng TEMP = new LatLng(33.97288687400812, -117.3266414006888);
+//    LAB
+//    LatLng Temp = new LatLng(33.975668510231934, -117.32629172616873);
+    LatLng user = TEMP;
+//    LatLng ORBACH = new LatLng(33.9746,-117.325);
+//    ClusterMarker userParkingLocationMarker;
 
     String buildingName[] = { "Bourns Hall", "Boyce Hall", "CHASS INT NORTH", "CHASS INT SOUTH",
             "CHUNG HALL", "HUMANITIES/SOCIAL SCIENCE", "LIFE SCIENCES", "MATERIAL SCIENCE AND ENGINEERING",
@@ -75,7 +87,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     String parking[] = {"Big Springs", "Lot 24", "Lot 26", "Lot 30", "Lot 32", "Lot 6"};
 
 
-    static final String TAG = "MAP ACTIVITY";
+    static final String TAG = "***********";
     /*
         Instantiates view
         1)Gets Parking Data From Firebase
@@ -110,7 +122,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        MoveCamera(new LatLng(33.976594, -117.328155), DEFAULT_ZOOM);
+        MoveCamera(UCR, DEFAULT_ZOOM);
         init_markers();
     }
 
@@ -120,6 +132,11 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     private void init_markers() {
         addMarkerType("Parking");
         addMarkerType("Building");
+        if(placeParkingLocation()) {
+            addMarkerType("User");
+        } else {
+            Log.d(TAG, "NO INITIAL LOCATION");
+        }
     }
 
     /*
@@ -170,45 +187,43 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
         building.setClickable(true);
         saveLocation.setClickable(true);
 
+//        Turns Parking Drop pins on/off
         parking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Before Clicked: ", "Parking " + parkingClicked + " Building: " + buildingClicked);
-                if(!parkingClicked && buildingClicked) {
-                    parkingMarker();
-                    mClusterManager.cluster();
+                if(!parkingClicked) {
+                    addMarkerType("Parking");
                     parkingClicked = true;
-                } else if(!parkingClicked && !buildingClicked) {
-                    parkingMarker();
-                    mClusterManager.cluster();
-                    parkingClicked = true;
-                } else if (parkingClicked && !buildingClicked){
-                    mMap.clear();
-                    parkingClicked = false;
                 } else {
+//                    mMap.clear();
                     parkingClicked = false;
+                }
+                if(placeParkingLocation()) {
+                    addMarkerType("User");
+                } else {
+                    Log.d(TAG, "NO INITIAL LOCATION");
                 }
                 Log.d("Clicked: ", "Parking " + parkingClicked + " Building: " + buildingClicked);
             }
         });
 
+//        Turns Building Drop pins on/off
         building.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Before Clicked: ", "Parking " + parkingClicked + " Building: " + buildingClicked);
-                if(!buildingClicked && parkingClicked) {
-                    buildingMarker();
-                    mClusterManager.cluster();
+                if(!buildingClicked) {
+                    addMarkerType("Building");
                     buildingClicked = true;
-                } else if(!buildingClicked && !parkingClicked) {
-                    buildingMarker();
-                    mClusterManager.cluster();
-                    buildingClicked = true;
-                } else if (buildingClicked && !parkingClicked){
-                    mMap.clear();
-                    buildingClicked = false;
                 } else {
+//                    mMap.clear();
                     buildingClicked = false;
+                }
+                if(placeParkingLocation()) {
+                    addMarkerType("User");
+                } else {
+                    Log.d(TAG, "NO INITIAL LOCATION");
                 }
 
                 Log.d("Clicked: ", "Parking " + parkingClicked + " Building: " + buildingClicked);
@@ -216,26 +231,63 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
 
         });
 
+//        Places user parking location on/off
         saveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "PRESSED LOCATION ");
                 if(!saveParking) {
-                    addMarkerType("User");
                     saveParking = true;
+                    getDeviceLocation();
+                    Log.d(TAG, "LOCATION IS " + user.longitude + ", " + user.latitude);
+                    saveParkingLocation();
                     String s = "Parking Location Saved";
+                    addMarkerType("User");
                     Toast.makeText(getApplication(),s, Toast.LENGTH_LONG).show();
                 } else {
                     String s = "Parking Location removed";
+                    mMap.clear();
                     Toast.makeText(getApplication(),s, Toast.LENGTH_LONG).show();
-                    Log.d(TAG, "Size: " + mClusterMarkers.size());
+                    removeSavedLocation();
                     saveParking = false;
                 }
+
+                Log.d(TAG, "NOW IS " + saveParking);
 
             }
         });
 
 
     }
+
+    private boolean placeParkingLocation() {
+        SharedPreferences sp = this.getSharedPreferences("Parking Location", Context.MODE_PRIVATE);
+        double l = sp.getLong("User Lat", -1);
+        double l2 = sp.getLong("User Log", -1);
+
+        if(l == -1 && l2 == -1) {
+            return false;
+        }
+
+        return true;
+    }
+//
+    private void saveParkingLocation() {
+        SharedPreferences sp = this.getSharedPreferences("Parking Location", Context.MODE_PRIVATE);
+        sp.edit().putLong("User Lat",(long)user.latitude).apply();
+        sp.edit().putLong("User Log",(long)user.longitude).apply();
+
+        float zoom = 20.0f;
+        MoveCameraUser(user,zoom);
+    }
+//
+    private void removeSavedLocation() {
+        user = new LatLng(-1,-1);
+        SharedPreferences sp = this.getSharedPreferences("Parking Location", Context.MODE_PRIVATE);
+        sp.edit().putLong("User Lat",-1).apply();
+        sp.edit().putLong("User Log",-1).apply();
+    }
+
     /*
         Initializes top spinner
      */
@@ -248,6 +300,11 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                 if(i != 0) {
                     String s = (String) adapterView.getItemAtPosition(i);
                     addMarker(s);
+                    if(placeParkingLocation()) {
+                        addMarkerType("User");
+                    } else {
+                        Log.d(TAG, "NO INITIAL LOCATION");
+                    }
 //                    if(i >= 1 && i <= 3 )
 //                        addMarkerType("Parking");
 //                    else
@@ -318,7 +375,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
     /*
         Gets current USer location
      */
-    private LatLng getDeviceLocation() {
+    private void getDeviceLocation() {
         FusedLocationProviderClient mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try{
             if(mLocationPermissionGranted) {
@@ -330,9 +387,10 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                         if(task.isSuccessful()) {
 //                            SUCCESS
                             Location currentLocation = (Location) task.getResult();
-                            if(currentLocation != null)
-                                user = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-//                            MoveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude() ), DEFAULT_ZOOM);
+                            if(currentLocation != null) {
+                                LatLng location = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                                MoveCameraUser(location, DEFAULT_ZOOM);
+                            }
                         } else {
 //                            Location Not Found
                             Toast.makeText(MapActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
@@ -343,7 +401,6 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
         }catch (SecurityException e) {
             Log.e("GOOGLE MAPS ACTIVITY",  "Get Device Location: Security Exception: " + e.getMessage());
         }
-        return user;
     }
 
     /*
@@ -366,14 +423,52 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
 /*
     Helper Functions
  */
+    /*
+        Adds markers by type
+     */
+    private void addMarkerType(String type) {
+        Log.d("addMArkerType", "HERE");
+        if(mMap != null) {
+            if(mClusterManager == null) {
+                mClusterManager = new ClusterManager<ClusterMarker>(this.getApplicationContext(), mMap);
+
+            }
+            if(mClusterManagerRenderer == null) {
+                mClusterManagerRenderer = new MyClusterMarkerRenderer(
+                        this,
+                        mMap,
+                        mClusterManager
+                );
+                mClusterManager.setRenderer(mClusterManagerRenderer);
+            }
+//            Calls Creator for either Parking or Buildings
+            switch (type){
+                case "Parking":
+//                    mMap.clear();
+                    parkingMarker();
+                    break;
+                case "Building":
+//                    mMap.clear();
+                    buildingMarker();
+                    break;
+                case "User":
+                    userMarker();
+                default:
+                    //Do Nothing
+                    break;
+            }
+
+            mClusterManager.cluster();
+        }
+    }
 
     /*
-        Adds marker to map given
-        @Param:
-            l: Latitude and Longitude of marker placement
-            t: Title of marker
-            v: Spots Available
-     */
+       Adds marker to map given
+       @Param:
+           l: Latitude and Longitude of marker placement
+           t: Title of marker
+           v: Spots Available
+    */
     private void addMarker(String s) {
         int icon = R.drawable.ic_parking_icon;
         MoveCamera(getLatLng(s), DEFAULT_ZOOM);
@@ -407,64 +502,6 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
         mClusterManager.cluster();
     }
 
-    private void userMarker() {
-        int icon = R.drawable.ic_parking_saved_icon;
-        LatLng userLocation = getDeviceLocation();
-        String snippet = "";
-        ClusterMarker newClusterMarker = new ClusterMarker(
-                userLocation,
-                "Saved Location",
-                snippet,
-                icon,
-                "Building"
-        );
-        mClusterManager.addItem(newClusterMarker);
-        mClusterManager.addItem(newClusterMarker);
-        float zoom = 16.0f;
-        MoveCamera(userLocation,zoom);
-        mClusterManager.cluster();
-    }
-
-
-    /*
-        Adds markers by type
-     */
-    private void addMarkerType(String type) {
-        Log.d("addMArkerType", "HERE");
-        if(mMap != null) {
-            if(mClusterManager == null) {
-                mClusterManager = new ClusterManager<ClusterMarker>(this.getApplicationContext(), mMap);
-
-            }
-            if(mClusterManagerRenderer == null) {
-                mClusterManagerRenderer = new MyClusterMarkerRenderer(
-                        this,
-                        mMap,
-                        mClusterManager
-                );
-                mClusterManager.setRenderer(mClusterManagerRenderer);
-            }
-//            Calls Creator for either Parking or Buildings
-            switch (type){
-                case "Parking":
-                    mMap.clear();
-                    parkingMarker();
-                    break;
-                case "Building":
-                    mMap.clear();
-                    buildingMarker();
-                    break;
-                case "User":
-                    userMarker();
-                default:
-                    //Do Nothing
-                    break;
-            }
-
-            mClusterManager.cluster();
-        }
-    }
-
     /*
         Creates Markers for ALL Buildings
      */
@@ -482,7 +519,7 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                     "Building"
             );
             mClusterManager.addItem(newClusterMarker);
-            mClusterManager.addItem(newClusterMarker);
+            mClusterManager.cluster();
         }
     }
 
@@ -504,8 +541,26 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
                     "Parking"
             );
             mClusterManager.addItem(newClusterMarker);
-            mClusterManager.addItem(newClusterMarker);
+            mClusterManager.cluster();
         }
+    }
+
+    /*
+        Cretes marker for user location
+     */
+    private void userMarker() {
+        int icon = R.drawable.ic_parking_saved_icon;
+        LatLng userLocation = user;
+        String snippet = "";
+        ClusterMarker userParkingLocationMarker = new ClusterMarker(
+                userLocation,
+                "Saved Location",
+                snippet,
+                icon,
+                "Building"
+        );
+        mClusterManager.addItem(userParkingLocationMarker);
+        mClusterManager.cluster();
     }
 
 
@@ -683,7 +738,13 @@ public class MapActivity extends MainActivity implements OnMapReadyCallback {
      */
     private void MoveCamera(LatLng latLng, float zoom) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-        mMap.clear();
+//        mMap.clear();
+    }
+
+    private void MoveCameraUser(LatLng latLng, float zoom) {
+        Log.d(TAG, "NEW USER LOCATION IS  " + user.latitude + ", " + user.latitude);
+        user = latLng;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
     /*
         Gets the parking data form Firebase and adds marker

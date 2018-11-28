@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             init_bar();
             init_parking();
             load_firebase();
-            scheduleJob();
+//            scheduleJob();
     }
 
     public void load_firebase() {
@@ -180,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 fetchData process = new fetchData();
                 process.execute();
+                scheduleJob();
             }
         });
     }

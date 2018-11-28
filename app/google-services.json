@@ -23,6 +23,22 @@
           }
         },
         {
+          "client_id": "460901211868-e38p53f24sqasams07jtpa3cu0dvi29h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andrewcruz.parking_app",
+            "certificate_hash": "f1248b1c375fd182c3a8447b60888bd0bfd7caf1"
+          }
+        },
+        {
+          "client_id": "460901211868-th95c447vein4vsn27681815q6fkpk4v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andrewcruz.parking_app",
+            "certificate_hash": "21cbee76631dd3333aa2885d48ff16c2d2f3aef3"
+          }
+        },
+        {
           "client_id": "460901211868-4hmcvnj4hpm2gn7un82onddck3vtl2ci.apps.googleusercontent.com",
           "client_type": 3
         }

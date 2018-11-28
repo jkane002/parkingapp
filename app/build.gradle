@@ -1,4 +1,4 @@
-    apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
@@ -10,6 +10,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {
@@ -44,6 +45,8 @@ dependencies {
 
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.android.support:gridlayout-v7:27.1.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

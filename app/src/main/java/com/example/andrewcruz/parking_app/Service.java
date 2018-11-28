@@ -34,7 +34,7 @@ public class Service extends JobService {
                 process = new fetchData();
                 process.execute();
                 Log.d(TAG,"Finishing Parse");
-                jobFinished(jobParam,false);
+                jobFinished(jobParam,true);
             }
         }).start();
     }
