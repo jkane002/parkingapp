@@ -2,7 +2,7 @@
 A parking app that helps UC Riverside students find available parking spaces at certain parking lots
 
 ## Demo
-<img src="https://media.giphy.com/media/cdeP4R5cYYYzCXqgBy/giphy.gif" width="40" height="40" />
+<img src="https://media.giphy.com/media/cdeP4R5cYYYzCXqgBy/giphy.gif"/>
 
 
 ## Features
