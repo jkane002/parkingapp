@@ -1,6 +1,10 @@
 # Parking App (R'Park) CS180 Project
 A parking app that helps UC Riverside students find available parking spaces at certain parking lots
 
+## Demo
+<img src="https://media.giphy.com/media/cdeP4R5cYYYzCXqgBy/giphy.gif" width="40" height="40" />
+
+
 ## Features
 - Six parking lots update every 5 minutes or once the user presses the button 'Update'
 - Clicking on a parking lot reveals the parking trends which are stored in a database using Firebase
