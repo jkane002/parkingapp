@@ -2,7 +2,7 @@
 A parking app that helps UC Riverside students find available parking spaces at certain parking lots
 
 ## Demo
-
+Click the image to view the YouTube demo video
 <a href="https://youtu.be/jNCptu-k7zg" target="_blank"><img src="http://img.youtube.com/vi/jNCptu-k7zg/0.jpg" 
 alt="Youtube Link"/></a>
 
