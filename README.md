@@ -2,7 +2,7 @@
 A parking app that helps UC Riverside students find available parking spaces at certain parking lots
 
 ## Demo
-
+<img src="https://thumbs.gfycat.com/EminentCorruptButterfly-size_restricted.gif"> </img>
 
 ## Features
 - Six parking lots update every 5 minutes or once the user presses the button 'Update'
